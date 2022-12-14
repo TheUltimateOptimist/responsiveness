@@ -81,8 +81,8 @@ The following three Classes can be used to defina a responsive UI in an easy, re
     return Text(
         "Hello World",
         style: TextStyle(
-        fontSize: fontSize.of(context),
-        color: fontColor.of(context),
+          fontSize: fontSize.of(context),
+          color: fontColor.of(context),
         ),
     );
   ```
@@ -119,8 +119,8 @@ The following three Classes can be used to defina a responsive UI in an easy, re
   ```
 
 - ### ResponsiveParent
-  ```The ResponsiveParent``` widget allows you to wrap a given ```Wiget``` with different ```Widget```s based on the current screen size.   
-  To wrap the ```Widget``` that you provided using the ```child``` parameter, you need to specify a callback for at least one of the six different possible screen sizes. This callback receives the given ```child```  as a parameter and returns a new ```Widget```. Inside the callback you can for example wrap the ```child``` with a ```Column``` or ```Row``` and return the newly created ```Widget```
+  ```The ResponsiveParent``` widget allows you to wrap a given ```Object``` with different ```Widget```s based on the current screen size.   
+  To wrap the ```Object``` that you provided using the ```child``` parameter, you need to specify a callback for at least one of the six different possible screen sizes. This callback receives the given ```child```  as a parameter and returns a new ```Widget```. Inside the callback you can for example wrap the ```child``` with a ```Column``` or ```Row``` and return the newly created ```Widget```
   Just like in the case of ```ResponsiveValue``` and ```ResponsiveChild``` the callback of the nearest screen size will be used if it is not defined for a particular screen size.
   
   In code:

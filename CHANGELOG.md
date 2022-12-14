@@ -10,3 +10,7 @@
 
 - improved README
 - ```ResponsiveParent``` now allows any ```Object```, not just ```Widget```s as its child
+
+## 1.0.3
+
+- improved README
