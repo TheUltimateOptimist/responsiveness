@@ -1,39 +1,12 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+A minimal, easy to use responsive framework for building UI for all screen sizes using the [Boostrap](https://getbootstrap.com/docs/5.0/layout/breakpoints/) breakpoints.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+## Background
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+When I was first given the task to develop a flutter application for all screen sizes I was overwhelmed and clueless. Even though flutter provides widgets like ```LayoutBuilder``` or ```MediaQuery``` to enable responsive UI development, I found making use of those widgets in an easy, readable, predictable manner quite difficult.<br>
+Because you still need to figure out:<br>
+- What brekpoints you want to use
+- How to identify the current breakpoint given the screen width
+- How to define a UI based on the current breakpoint in an easy, readable manner
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+This package is the result of me trying to answer the above mentioned questions and offers thereby an oppionated approach to developing responsive UI using flutter.
 
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
-```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
