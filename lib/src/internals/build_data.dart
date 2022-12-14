@@ -8,7 +8,7 @@ class BuildData {
     required this.breakpoints,
     required this.child,
   });
-  
+
   final Widget child;
   final double width;
   final Breakpoints breakpoints;

@@ -1,4 +1,11 @@
-import 'package:flutter/material.dart' show StatelessWidget, Widget, BuildContext, MediaQuery, Container, InheritedWidget;
+import 'package:flutter/material.dart'
+    show
+        StatelessWidget,
+        Widget,
+        BuildContext,
+        MediaQuery,
+        Container,
+        InheritedWidget;
 import 'breakpoints.dart';
 import '../internals/build_data.dart';
 
@@ -9,7 +16,7 @@ part 'breakpoint_provider.dart';
 ///the current [Breakpoint]
 ///
 ///it can be retrived from the [BuildContext] using
-///```dart 
+///```dart
 ///Breakpoint.of(context)
 ///```
 ///it exposes the [index] and the [value] of the current [Breakpoint]
@@ -17,8 +24,7 @@ part 'breakpoint_provider.dart';
 ///{@endtemplate}
 ///{@macro index}
 ///{@macro value}
-class Breakpoint extends InheritedWidget{
-
+class Breakpoint extends InheritedWidget {
   ///{@macro breakpoint}
   ///{@macro index}
   ///{@macro value}
@@ -81,36 +87,35 @@ class Breakpoint extends InheritedWidget{
   }
 
   ///retrieves the current [Breakpoint] from the given [BuildContext]
-  factory Breakpoint.of(BuildContext context){
-    switch(Breakpoint.of(context).index){
-      case Breakpoint.xs: throw UnimplementedError();
-      case Breakpoint.sm: throw UnimplementedError();
-      case Breakpoint.md: throw UnimplementedError();
-      case Breakpoint.lg: throw UnimplementedError();
-      case Breakpoint.xl: throw UnimplementedError();
-      case Breakpoint.xxl: throw UnimplementedError();
-    }
+  factory Breakpoint.of(BuildContext context) {
     final result = context.dependOnInheritedWidgetOfExactType<Breakpoint>();
-    assert(result != null, "No Breakpoint found in context. Please make sure to add the BreakpointProvider at the top of your widget tree");
+    assert(result != null,
+        "No Breakpoint found in context. Please make sure to add the BreakpointProvider at the top of your widget tree");
     return result as Breakpoint;
   }
 
-  factory Breakpoint._fromBuildData(BuildData buildData){
-    if(buildData.width >= buildData.breakpoints.xxl){
-      return Breakpoint(Breakpoint.xxl, buildData.breakpoints.xxl, child: buildData.child);
+  factory Breakpoint._fromBuildData(BuildData buildData) {
+    if (buildData.width >= buildData.breakpoints.xxl) {
+      return Breakpoint(Breakpoint.xxl, buildData.breakpoints.xxl,
+          child: buildData.child);
     }
-    if(buildData.width >= buildData.breakpoints.xl){
-      return Breakpoint(Breakpoint.xl, buildData.breakpoints.xl, child: buildData.child);
+    if (buildData.width >= buildData.breakpoints.xl) {
+      return Breakpoint(Breakpoint.xl, buildData.breakpoints.xl,
+          child: buildData.child);
     }
-    if(buildData.width >= buildData.breakpoints.lg){
-      return Breakpoint(Breakpoint.lg, buildData.breakpoints.lg, child: buildData.child);
+    if (buildData.width >= buildData.breakpoints.lg) {
+      return Breakpoint(Breakpoint.lg, buildData.breakpoints.lg,
+          child: buildData.child);
     }
-    if(buildData.width >= buildData.breakpoints.md){
-      return Breakpoint(Breakpoint.md, buildData.breakpoints.md, child: buildData.child);
+    if (buildData.width >= buildData.breakpoints.md) {
+      return Breakpoint(Breakpoint.md, buildData.breakpoints.md,
+          child: buildData.child);
     }
-    if(buildData.width >= buildData.breakpoints.sm){
-      return Breakpoint(Breakpoint.sm, buildData.breakpoints.sm, child: buildData.child);
+    if (buildData.width >= buildData.breakpoints.sm) {
+      return Breakpoint(Breakpoint.sm, buildData.breakpoints.sm,
+          child: buildData.child);
     }
-    return Breakpoint(Breakpoint.xs, buildData.breakpoints.xs, child: buildData.child);
+    return Breakpoint(Breakpoint.xs, buildData.breakpoints.xs,
+        child: buildData.child);
   }
 }

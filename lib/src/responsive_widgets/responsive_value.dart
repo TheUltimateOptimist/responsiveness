@@ -23,7 +23,7 @@ import '../internals/value_finder.dart';
 ///```
 ///In the above example, 10 would be used for the screen sizes xs, sm and 20 would be used for the screen sizes md, lg, xl, xxl
 ///{@endtemplate}
-class ResponsiveValue<T> with ValueFinder<T>{
+class ResponsiveValue<T> with ValueFinder<T> {
   ///{@macro responsive_value}
   const ResponsiveValue({
     this.xs,

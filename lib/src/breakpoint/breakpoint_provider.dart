@@ -1,5 +1,3 @@
-
-
 part of 'breakpoint.dart';
 
 ///{@template breakpoint_provider}
@@ -12,7 +10,8 @@ class BreakpointProvider extends StatelessWidget {
   ///
   ///it is possible to customize the minimum width for the breakpoints xs, sm, md, lg, xl and xxl by specifying the [breakpoints] property.
   ///Nevertheless I strongly advise against it as the default values have been well thought through
-  const BreakpointProvider({super.key, this.child, this.breakpoints = const Breakpoints()});
+  const BreakpointProvider(
+      {super.key, this.child, this.breakpoints = const Breakpoints()});
 
   ///the subtree to provide the current [Breakpoint] to
   final Widget? child;
