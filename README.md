@@ -1,6 +1,18 @@
 A minimal, easy to use responsive framework for building UI for all screen sizes using the [Boostrap](https://getbootstrap.com/docs/5.0/layout/breakpoints/) breakpoints.
 
-## Background
+<!-- vscode-markdown-toc -->
+* 1. [Background](#Background)
+* 2. [Breakpoints](#Breakpoints)
+* 3. [Getting started](#Gettingstarted)
+* 4. [Creating the UI](#CreatingtheUI)
+
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
+##  1. <a name='Background'></a>Background
 
 When I was first given the task to develop a flutter application for all screen sizes I was overwhelmed and clueless. Even though flutter provides widgets like ```LayoutBuilder``` or ```MediaQuery``` to enable responsive UI development, I found making use of those widgets in an easy, readable, predictable manner quite difficult.<br>
 Because you still need to figure out:<br>
@@ -10,7 +22,7 @@ Because you still need to figure out:<br>
 
 This package is the result of me trying to answer the above mentioned questions and offers thereby an oppionated approach for developing responsive UI using flutter.
 
-## Breakpoints
+##  2. <a name='Breakpoints'></a>Breakpoints
 
 This package uses the [Boostrap](https://getbootstrap.com/docs/5.0/layout/breakpoints/) breakpoints:
 
@@ -23,9 +35,9 @@ This package uses the [Boostrap](https://getbootstrap.com/docs/5.0/layout/breakp
 |xl        |extra large |1200         |large destkops  |
 |xxl       |xx-large    |1400         |larger destkops |
 
-The minimum widths in the above table are used by default, but you can also customize them, as shown [here](https://google.com/).
+The minimum widths in the above table are used by default, but you can also customize them, as shown [here](#Getting started).
 
-## Getting started
+##  3. <a name='Gettingstarted'></a>Getting started
 
 To use this package in your app you need to wrap you widget tree with ```BreakpointProvider``` like so:
 ```dart
@@ -61,7 +73,7 @@ BreakpointProvider(
 ```
 Nevertheless, I advise you to use the default values as they have been well thought through and proven themselves over time.
 
-## Creating the UI
+##  4. <a name='CreatingtheUI'></a>Creating the UI
 
 The following three Classes can be used to defina a responsive UI in an easy, readable manner.
 

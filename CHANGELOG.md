@@ -14,3 +14,7 @@
 ## 1.0.3
 
 - improved README
+
+## 1.0.4
+
+- added table of contents to README
