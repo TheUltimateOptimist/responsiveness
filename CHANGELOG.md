@@ -26,3 +26,10 @@
 ## 1.0.6
 
 - improved README
+
+## 1.0.7
+
+- renamed Breakpoint to ScreenSize
+- renamed Breakpoints to MinimumWidths
+- renamed BreakpointProvider to ScreenSizeProvider
+- improved README

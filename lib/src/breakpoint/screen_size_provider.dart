@@ -1,31 +1,31 @@
-part of 'breakpoint.dart';
+part of 'screen_size.dart';
 
-///{@template breakpoint_provider}
-///provides its child with the current [Breakpoint]
+///{@template screen_size_provider}
+///provides its child with the current [ScreenSize]
 ///
 ///it needs to sit on top of the widget tree in order to use the widgets inside the responsiveness package
 ///{@endtemplate}
-class BreakpointProvider extends StatelessWidget {
-  ///{@macro breakpoint_provider}
+class ScreenSizeProvider extends StatelessWidget {
+  ///{@macro screen_size_provider}
   ///
   ///it is possible to customize the minimum width for the breakpoints xs, sm, md, lg, xl and xxl by specifying the [breakpoints] property.
   ///Nevertheless I strongly advise against it as the default values have been well thought through
-  const BreakpointProvider(
-      {super.key, this.child, this.breakpoints = const Breakpoints()});
+  const ScreenSizeProvider(
+      {super.key, this.child, this.minimumWidths = const MinimumWidths()});
 
-  ///the subtree to provide the current [Breakpoint] to
+  ///the subtree to provide the current [ScreenSize] to
   final Widget? child;
 
-  ///holds the minimum widths for the breakpoints
-  final Breakpoints breakpoints;
+  ///holds the minimum widths for the the screen sizes xs, sm, md, lg, xl, xxl.
+  final MinimumWidths minimumWidths;
 
   @override
   Widget build(BuildContext context) {
     final buildData = BuildData(
       width: MediaQuery.of(context).size.width,
-      breakpoints: breakpoints,
+      screenSizes: minimumWidths,
       child: child ?? Container(),
     );
-    return Breakpoint._fromBuildData(buildData);
+    return ScreenSize._fromBuildData(buildData);
   }
 }

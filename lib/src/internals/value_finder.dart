@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' show BuildContext;
 
-import '../breakpoint/breakpoint.dart' show Breakpoint;
+import '../breakpoint/screen_size.dart' show ScreenSize;
 
 class _Distances {
   int leftDistance = 0;
@@ -12,7 +12,7 @@ mixin ValueFinder<T> {
     BuildContext context,
     List<T?> values,
   ) {
-    final startIndex = Breakpoint.of(context).index;
+    final startIndex = ScreenSize.of(context).index;
     final distances = _Distances();
     final leftValue = _findLeftValue(startIndex, values, distances);
     final rightValue = _findRightValue(startIndex, values, distances);

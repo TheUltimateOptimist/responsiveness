@@ -1,16 +1,10 @@
 A minimal, easy to use responsive framework for building UI for all screen sizes using the [Boostrap](https://getbootstrap.com/docs/5.0/layout/breakpoints/) breakpoints.
 
-<!-- vscode-markdown-toc -->
-* - [1. Background](#Background)
-* - [2. Breakpoints](#Breakpoints)
-* - [3. Getting started](#Gettingstarted)
-* - [4. Creating the UI](#CreatingtheUI)
-
-<!-- vscode-markdown-toc-config
-	numbering=true
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
+- [1. Background](#Background)
+- [2. Breakpoints](#Breakpoints)
+- [3. Getting started](#Gettingstarted)
+- [4. Creating the UI](#CreatingtheUI)
+- [5. Current screen size](#currentscreensize)
 
 ##  1. <a name='Background'></a>Background
 
@@ -35,11 +29,11 @@ This package uses the [Boostrap](https://getbootstrap.com/docs/5.0/layout/breakp
 |xl        |extra large |1200         |large destkops  |
 |xxl       |xx-large    |1400         |larger destkops |
 
-The minimum widths in the above table are used by default, but you can also customize them, as shown [here](#custombreakpoint).
+The minimum widths in the above table are used by default, but you can also customize them, as shown [here](#minimumWidths).
 
 ##  3. <a name='Gettingstarted'></a>Getting started
 
-To use this package in your app you need to wrap you widget tree with ```BreakpointProvider``` like so:
+To use this package in your app you need to wrap you widget tree with ```ScreenSizeProvider``` like so:
 ```dart
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -49,15 +43,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: const MyHomePage(),
       builder: (context, child) {
-        return BreakpointProvider(child: child);
+        return ScreenSizeProvider(child: child);
       },
     );
   }
 }
 ```
-The ```BreakpointProvider``` identifys the current breakpoint and provides that information to the subtree.
+The ```ScreenSizeProvider``` identifys the current screen size and provides that information to the subtree.
 
-<a name='custombreakpoint'></a>By setting the ```breakpoints``` parameter of the ```BreakpointProvider``` you can customize the minimum widths of the six screen sizes xs, sm, md, lg, xl and xxl.
+<a name='minimumWidths'></a>By setting the ```minimumWidths``` parameter of the ```ScreenSizeProvider``` you can customize the minimum widths of the six screen sizes xs, sm, md, lg, xl and xxl.
 ```dart
 BreakpointProvider(
   breakpoints: Breakpoints(
@@ -146,3 +140,65 @@ The following three Classes can be used to defina a responsive UI in an easy, re
       child: [], //some children Widgets
     );
   ```
+
+##  5. <a name='currentscreensize'></a>Current ```ScreenSize```
+
+Even though the classes from the (Creating the UI)[#CreatingtheUI] section should usually be enough, it is also possible to determine the current screen size and perform custom logic based on the result.
+
+Given the ```BuildContext``` you can use ```ScreenSize.of(context)``` to get the current ```ScreenSize```.
+
+The ```ScreenSize``` object exposes the ```index``` and the ```minimumWidth``` field.
+
+The index field ranges from 0 to 5 and tells you the current screen size.
+
+0 -> ```xs```, 1 -> ```sm```, 2 -> ```md```, 3 -> ```lg```, 4 -> ```xl```, 5 -> ```xxl```.
+
+In code:
+```dart
+@override
+Widget build(BuildContext context){
+  final index = ScreenSize.of(context).index;
+  if(index == ScreenSize.xs){
+    //return some widget
+  }
+  else if(index == ScreenSize.sm){
+    //return some widget
+  }
+  else{
+    //return some widget
+  }
+}
+```
+
+The ```minimumWidth``` field exposes the minimum width of the current screen size. 
+
+Whenever the curren screen size is ```lg``` for example, ```minimumWidth``` will be equal to ```992```.
+
+In code:
+```dart
+@override
+Widget build(BuildContext context){
+  final screenSize = ScreenSize.of(context);
+  if(screenSize == ScreenSize.lg){
+    return Text(screenSize.minimumWidth.toString()) //same as Text('992')
+  }
+  return Text("other text")
+}
+```
+
+##  5. <a name='usage'></a>Usage
+
+The tools described above allow you to build responsive UI for all screen sizes easily. But how can you best apply them. Here is my recommendation.
+
+The biggest hurdle to fast and easy application development is complexity. That is why at its core software development is about breaking up big problems into smaller and smaller ones until they can easily be handled on at a time.
+
+The same principle should be used to build responsive UI in my opinion.
+
+First, you just focus on building the UI for mobile phones(e.g screen size xs). And only after you have completed that step, you start to worry about the other screen sizes. Now that you have already completed the UI for mobile phones you can run it on other screen sizes, see how it looks like and use the tools from the (Creating the UI)[#CreatingtheUI] section to make the proper adjustments for larger screen sizes.
+
+This should provide you with a fairly simple approach for building UI for all screen sizes using flutter. 
+
+I wish you best of luck for your software project.
+
+
+
