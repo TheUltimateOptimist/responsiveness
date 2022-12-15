@@ -33,3 +33,7 @@
 - renamed Breakpoints to MinimumWidths
 - renamed BreakpointProvider to ScreenSizeProvider
 - improved README
+
+## 1.0.8
+
+- fixed mistake in README
