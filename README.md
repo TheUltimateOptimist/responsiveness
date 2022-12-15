@@ -5,6 +5,7 @@ A minimal, easy to use responsive framework for building UI for all screen sizes
 - [3. Getting started](#Gettingstarted)
 - [4. Creating the UI](#CreatingtheUI)
 - [5. Current screen size](#currentscreensize)
+- [6. Usage](#usage)
 
 ##  1. <a name='Background'></a>Background
 
@@ -186,11 +187,11 @@ Widget build(BuildContext context){
 }
 ```
 
-##  5. <a name='usage'></a>Usage
+##  6. <a name='usage'></a>Usage
 
 The tools described above allow you to build responsive UI for all screen sizes easily. But how can you best apply them. Here is my recommendation.
 
-The biggest hurdle to fast and easy application development is complexity. That is why at its core software development is about breaking up big problems into smaller and smaller ones until they can easily be handled on at a time.
+The biggest hurdle to fast and easy application development is complexity. That is why at its core software development is about breaking up big problems into smaller and smaller ones until they can easily be handled one at a time.
 
 The same principle should be used to build responsive UI in my opinion.
 

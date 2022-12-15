@@ -45,3 +45,7 @@
 ## 1.1.0
 
 - fixed errors
+
+# 1.1.1
+
+- updated README
