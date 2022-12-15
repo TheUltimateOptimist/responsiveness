@@ -2,6 +2,9 @@
 .dart_tool/
 .packages
 
+# flutter project for writing the example
+responsiveness_example
+
 # Conventional directory for build outputs.
 build/
 

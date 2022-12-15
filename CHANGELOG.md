@@ -37,3 +37,7 @@
 ## 1.0.8
 
 - fixed mistake in README
+
+## 1.0.9
+
+- added example
