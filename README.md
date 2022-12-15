@@ -1,10 +1,10 @@
 A minimal, easy to use responsive framework for building UI for all screen sizes using the [Boostrap](https://getbootstrap.com/docs/5.0/layout/breakpoints/) breakpoints.
 
 <!-- vscode-markdown-toc -->
-* 1. [Background](#Background)
-* 2. [Breakpoints](#Breakpoints)
-* 3. [Getting started](#Gettingstarted)
-* 4. [Creating the UI](#CreatingtheUI)
+* - [1. Background](#Background)
+* - [2. Breakpoints](#Breakpoints)
+* - [3. Getting started](#Gettingstarted)
+* - [4. Creating the UI](#CreatingtheUI)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -35,7 +35,7 @@ This package uses the [Boostrap](https://getbootstrap.com/docs/5.0/layout/breakp
 |xl        |extra large |1200         |large destkops  |
 |xxl       |xx-large    |1400         |larger destkops |
 
-The minimum widths in the above table are used by default, but you can also customize them, as shown [here](#Getting started).
+The minimum widths in the above table are used by default, but you can also customize them, as shown [here](#custombreakpoint).
 
 ##  3. <a name='Gettingstarted'></a>Getting started
 
@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
 ```
 The ```BreakpointProvider``` identifys the current breakpoint and provides that information to the subtree.
 
-By setting the ```breakpoints``` parameter of the ```BreakpointProvider``` you can customize the minimum widths of the six screen sizes xs, sm, md, lg, xl and xxl.
+<a name='custombreakpoint'></a>By setting the ```breakpoints``` parameter of the ```BreakpointProvider``` you can customize the minimum widths of the six screen sizes xs, sm, md, lg, xl and xxl.
 ```dart
 BreakpointProvider(
   breakpoints: Breakpoints(
@@ -71,7 +71,7 @@ BreakpointProvider(
   child: child,
 )
 ```
-Nevertheless, I advise you to use the default values as they have been well thought through and proven themselves over time.
+Nevertheless, I advise you to use the default values as they have been well thought through and have proven themselves over time.
 
 ##  4. <a name='CreatingtheUI'></a>Creating the UI
 
@@ -146,8 +146,3 @@ The following three Classes can be used to defina a responsive UI in an easy, re
       child: [], //some children Widgets
     );
   ```
-
-
-
-
-
