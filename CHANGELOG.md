@@ -49,3 +49,7 @@
 # 1.1.1
 
 - updated README
+
+# 1.1.2
+
+- fixed mistake in README

@@ -54,8 +54,8 @@ The ```ScreenSizeProvider``` identifys the current screen size and provides that
 
 <a name='minimumWidths'></a>By setting the ```minimumWidths``` parameter of the ```ScreenSizeProvider``` you can customize the minimum widths of the six screen sizes xs, sm, md, lg, xl and xxl.
 ```dart
-BreakpointProvider(
-  breakpoints: Breakpoints(
+ScreenSizeProvider(
+  minimumWidths: MinimumWidths(
     xs: 0, //has to always remain 0
     sm: 577,//default is 576
     md: 800,//default is 768
