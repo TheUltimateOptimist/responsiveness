@@ -41,3 +41,7 @@
 ## 1.0.9
 
 - added example
+
+## 1.1.0
+
+- fixed errors

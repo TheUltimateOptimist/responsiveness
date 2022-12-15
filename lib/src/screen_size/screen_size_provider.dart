@@ -23,7 +23,7 @@ class ScreenSizeProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     final buildData = BuildData(
       width: MediaQuery.of(context).size.width,
-      screenSizes: minimumWidths,
+      minimumWidths: minimumWidths,
       child: child ?? Container(),
     );
     return ScreenSize._fromBuildData(buildData);

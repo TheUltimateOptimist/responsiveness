@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' show BuildContext;
 
-import '../breakpoint/screen_size.dart' show ScreenSize;
+import '../screen_size/screen_size.dart' show ScreenSize;
 
 class _Distances {
   int leftDistance = 0;

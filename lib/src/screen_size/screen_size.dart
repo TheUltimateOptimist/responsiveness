@@ -95,27 +95,27 @@ class ScreenSize extends InheritedWidget {
   }
 
   factory ScreenSize._fromBuildData(BuildData buildData) {
-    if (buildData.width >= buildData.screenSizes.xxl) {
-      return ScreenSize(ScreenSize.xxl, buildData.screenSizes.xxl,
+    if (buildData.width >= buildData.minimumWidths.xxl) {
+      return ScreenSize(ScreenSize.xxl, buildData.minimumWidths.xxl,
           child: buildData.child);
     }
-    if (buildData.width >= buildData.screenSizes.xl) {
-      return ScreenSize(ScreenSize.xl, buildData.screenSizes.xl,
+    if (buildData.width >= buildData.minimumWidths.xl) {
+      return ScreenSize(ScreenSize.xl, buildData.minimumWidths.xl,
           child: buildData.child);
     }
-    if (buildData.width >= buildData.screenSizes.lg) {
-      return ScreenSize(ScreenSize.lg, buildData.screenSizes.lg,
+    if (buildData.width >= buildData.minimumWidths.lg) {
+      return ScreenSize(ScreenSize.lg, buildData.minimumWidths.lg,
           child: buildData.child);
     }
-    if (buildData.width >= buildData.screenSizes.md) {
-      return ScreenSize(ScreenSize.md, buildData.screenSizes.md,
+    if (buildData.width >= buildData.minimumWidths.md) {
+      return ScreenSize(ScreenSize.md, buildData.minimumWidths.md,
           child: buildData.child);
     }
-    if (buildData.width >= buildData.screenSizes.sm) {
-      return ScreenSize(ScreenSize.sm, buildData.screenSizes.sm,
+    if (buildData.width >= buildData.minimumWidths.sm) {
+      return ScreenSize(ScreenSize.sm, buildData.minimumWidths.sm,
           child: buildData.child);
     }
-    return ScreenSize(ScreenSize.xs, buildData.screenSizes.xs,
+    return ScreenSize(ScreenSize.xs, buildData.minimumWidths.xs,
         child: buildData.child);
   }
 }
