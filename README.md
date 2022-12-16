@@ -180,7 +180,7 @@ In code:
 @override
 Widget build(BuildContext context){
   final screenSize = ScreenSize.of(context);
-  if(screenSize == ScreenSize.lg){
+  if(screenSize.index == ScreenSize.lg){
     return Text(screenSize.minimumWidth.toString()) //same as Text('992')
   }
   return Text("other text")
