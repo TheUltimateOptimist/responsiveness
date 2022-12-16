@@ -46,14 +46,18 @@
 
 - fixed errors
 
-# 1.1.1
+## 1.1.1
 
 - updated README
 
-# 1.1.2
+## 1.1.2
 
 - fixed mistake in README
 
-# 1.1.3
+## 1.1.3
 
 - fixed mistake in README
+
+## 1.1.4
+
+- fixed wrong formatting of Changelog.md
