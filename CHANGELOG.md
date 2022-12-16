@@ -53,3 +53,7 @@
 # 1.1.2
 
 - fixed mistake in README
+
+# 1.1.3
+
+- fixed mistake in README

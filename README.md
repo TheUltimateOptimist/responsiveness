@@ -1,13 +1,13 @@
 A minimal, easy to use responsive framework for building UI for all screen sizes using the [Boostrap](https://getbootstrap.com/docs/5.0/layout/breakpoints/) breakpoints.
 
-- [1. Background](#Background)
-- [2. Breakpoints](#Breakpoints)
-- [3. Getting started](#Gettingstarted)
-- [4. Creating the UI](#CreatingtheUI)
+- [1. Background](#background)
+- [2. Breakpoints](#breakpoints)
+- [3. Getting started](#gettingstarted)
+- [4. Creating the UI](#creatingtheui)
 - [5. Current screen size](#currentscreensize)
 - [6. Usage](#usage)
 
-##  1. <a name='Background'></a>Background
+##  1. <a name='background'></a>Background
 
 When I was first given the task to develop a flutter application for all screen sizes I was overwhelmed and clueless. Even though flutter provides widgets like ```LayoutBuilder``` or ```MediaQuery``` to enable responsive UI development, I found making use of those widgets in an easy, readable, predictable manner quite difficult.<br>
 Because you still need to figure out:<br>
@@ -17,7 +17,7 @@ Because you still need to figure out:<br>
 
 This package is the result of me trying to answer the above mentioned questions and offers thereby an oppionated approach for developing responsive UI using flutter.
 
-##  2. <a name='Breakpoints'></a>Breakpoints
+##  2. <a name='breakpoints'></a>Breakpoints
 
 This package uses the [Boostrap](https://getbootstrap.com/docs/5.0/layout/breakpoints/) breakpoints:
 
@@ -32,7 +32,7 @@ This package uses the [Boostrap](https://getbootstrap.com/docs/5.0/layout/breakp
 
 The minimum widths in the above table are used by default, but you can also customize them, as shown [here](#minimumWidths).
 
-##  3. <a name='Gettingstarted'></a>Getting started
+##  3. <a name='gettingstarted'></a>Getting started
 
 To use this package in your app you need to wrap you widget tree with ```ScreenSizeProvider``` like so:
 ```dart
@@ -68,7 +68,7 @@ ScreenSizeProvider(
 ```
 Nevertheless, I advise you to use the default values as they have been well thought through and have proven themselves over time.
 
-##  4. <a name='CreatingtheUI'></a>Creating the UI
+##  4. <a name='creatingtheui'></a>Creating the UI
 
 The following three Classes can be used to defina a responsive UI in an easy, readable manner.
 
