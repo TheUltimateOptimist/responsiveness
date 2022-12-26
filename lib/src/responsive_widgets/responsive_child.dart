@@ -9,9 +9,10 @@ import '../internals/value_finder.dart';
 ///Use it when you want to provide different [Widget]s based on the curren screen size.
 ///
 ///It takes 6 [Widget]s for the 6 different screen sizes [xs], [sm], [md], [lg], [xl], [xxl].
-///One or more widgets need to be specified.
-///If no widget is given for a screen size the widget of the nearest screen size will be used.
-///If there are two nearest widgets the one from the smaller screen size will be used.
+///The widget of the screen size [xs] is mandatory, the other ones are optional.
+///If you only provide a widget for the screen size [xs], the given widget will be used for all screen sizes.
+///
+///If you also provide a widget for the screen size [lg] for example, the widget you provided for [xs] will be used for screen sizes [xs] - [lg] and the widget you provided for [lg] will be used for the screen sizes [lg] - [xxl].
 ///{@endtemplate}
 class ResponsiveChild extends StatelessWidget with ValueFinder<Widget> {
   ///{@macro responsive_child}

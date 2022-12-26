@@ -94,22 +94,16 @@ The following three Classes can be used to defina a responsive UI in an easy, re
     );
   ```
 
-  Note that you do not need to specify a value for every screen size. You need to only provide at least one, but can also provide more than one or all. If you didn't provide a value for a screen size, the value from the nearest one will be used.
+  Note that you do not need to specify a value for every screen size. You need to only provide at least the one for the screen size xs, but can also provide more than one or all. If you didn't provide a value for a screen size, the value from the next smallest screen size with a defined value will be used.
 
   For example consider:
   ```dart
   static const fontSize = ResponsiveValue<double>(xs: 20.0, sm,: 21.0, md: 22.0);
   ```
-  In this case only values for the screen sizes xs, sm and md were specified. Nevertheless for the screen sizes lg, xl, and xxl the value from the screen size md will be used as it is the nearest screen size to the three.
-
-  Next take a look at:
-  ```dart
-  static const fontSize = ResponsiveValue<double>(xs: 20.0, md: 22.0);
-  ```
-  In this case no value is specified for the screen size ```sm``` which is between ```xs``` and ```md```. The above mentioned rule of using the value of the nearest screen size would not work in this example as there are two nearest screen sizes. So in that case the value of the smaller screen size will be used. In this example that would be the value of the screen size ```xs```.
+  In this case only values for the screen sizes xs, sm and md were specified. Nevertheless for the screen sizes lg, xl, and xxl the value from the screen size md will be used as it is the nearest smaller screen size to the three.
 
 - ### ResponsiveChild
-  ```The ResponsiveChild``` widget allows you to provide different widgets based on the current screen size. Just like in the case of ```ResponsiveValue```, you do not need to specify a widget for every single one of the six differnt possible screen sizes. A widget for at least on screen size needs to be given.
+  ```The ResponsiveChild``` widget allows you to provide different widgets based on the current screen size. Just like in the case of ```ResponsiveValue```, you do not need to specify a widget for every single one of the six differnt possible screen sizes. Only the widget for the screen size xs is mandatory.
   
   In code:
   ```dart
@@ -127,8 +121,8 @@ The following three Classes can be used to defina a responsive UI in an easy, re
 
 - ### ResponsiveParent
   ```The ResponsiveParent``` widget allows you to wrap a given ```Object``` with different ```Widget```s based on the current screen size.   
-  To wrap the ```Object``` that you provided using the ```child``` parameter, you need to specify a callback for at least one of the six different possible screen sizes. This callback receives the given ```child```  as a parameter and returns a new ```Widget```. Inside the callback you can for example wrap the ```child``` with a ```Column``` or ```Row``` and return the newly created ```Widget```
-  Just like in the case of ```ResponsiveValue``` and ```ResponsiveChild``` the callback of the nearest screen size will be used if it is not defined for a particular screen size.
+  To wrap the ```Object``` that you provided using the ```child``` parameter, you need to specify a callback for at least the screen size xs. This callback receives the given ```child```  as a parameter and returns a new ```Widget```. Inside the callback you can for example wrap the ```child``` with a ```Column``` or ```Row``` and return the newly created ```Widget```
+  Just like in the case of ```ResponsiveValue``` and ```ResponsiveChild``` the callback of the nearest smaller screen size will be used if it is not defined for a particular screen size.
   
   In code:
   ```dart

@@ -70,3 +70,7 @@
 ## 1.1.6
 
 - small fix
+
+## 1.1.7
+
+- improved docs

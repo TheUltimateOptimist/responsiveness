@@ -7,11 +7,10 @@ import '../internals/value_finder.dart';
 ///
 ///Use it when you want to specify differnt values for different screen sizes.
 ///
-///One or more of the 6 different screen size parameters [xs], [sm], [md], [lg], [xl], [xxl] need to be specified.
+///The value of the screen size [xs] is mandatory, the other ones are optional.
+///If you only provide a value for the screen size [xs], the given value will be used for all screen sizes.
 ///
-///If no value is specified for a particular screen size parameter, the value from the nearest, defined screen size parameter will be used
-///
-///If there are two nearest, defined screen size parameters, the one from the smaller screen size will be used.
+///If you also provide a value for the screen size [lg] for example, the value you provided for [xs] will be used for screen sizes [xs] - [lg] and the value you provided for [lg] will be used for the screen sizes [lg] - [xxl].
 ///
 ///It could be used to apply different fontSizes for different screen sizes like so:
 ///```dart

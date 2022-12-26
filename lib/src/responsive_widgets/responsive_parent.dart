@@ -12,11 +12,10 @@ import '../internals/value_finder.dart';
 ///
 ///Added to that it takes 6 [Widget] returning functions which you can use to wrap the given [child] with the appropriate [Widget] baded on the current screen size.
 ///
-///One or more of these 6 [Widget] returning functions need to be specified.
+///The widget returning function of the screen size [xs] is mandatory, the other ones are optional.
+///If you only provide one for the screen size [xs], the given function will be used for all screen sizes.
 ///
-///If no function is given for a screen size the function of the nearest screen size will be used to obtain the widget to be built.
-///
-///If there are two nearest functions the one from the smaller screen size will be used.
+///If you also provide one for the screen size [lg] for example, the function you provided for [xs] will be used for screen sizes [xs] - [lg] and the function you provided for [lg] will be used for the screen sizes [lg] - [xxl].
 ///{@endtemplate}
 class ResponsiveParent<T> extends StatelessWidget with ValueFinder {
   ///{@macro responsive_parent}
