@@ -61,3 +61,8 @@
 ## 1.1.4
 
 - fixed wrong formatting of Changelog.md
+
+## 1.1.5
+
+- improved README
+- changed Widget determination strategy
