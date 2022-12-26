@@ -66,3 +66,7 @@
 
 - improved README
 - changed Widget determination strategy
+
+## 1.1.6
+
+- small fix
