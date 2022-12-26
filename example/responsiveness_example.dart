@@ -39,8 +39,8 @@ class MyHomePage extends StatelessWidget {
           actions: actions.of(context),
         ),
         body: ResponsiveParent(
-          //for screen sizes xs, xl, xxl light theme
-          //for screen sizes sm, md, lg dart theme
+          //for screen sizes xs, xxl light theme
+          //for screen sizes sm, md, lg, xl dark theme
           xs: (child) => Theme(data: ThemeData.light(), child: child),
           sm: (child) => Theme(data: ThemeData.dark(), child: child),
           xxl: (child) => Theme(data: ThemeData.light(), child: child),
