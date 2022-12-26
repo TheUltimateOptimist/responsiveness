@@ -1,6 +1,6 @@
 name: responsiveness
 description: A minimal responsive framework for building UI for all screen sizes using the Bootstrap breakpoints.
-version: 1.1.7
+version: 1.1.8
 repository: https://github.com/TheUltimateOptimist/responsiveness
 
 environment:

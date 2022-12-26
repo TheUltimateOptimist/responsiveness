@@ -74,3 +74,7 @@
 ## 1.1.7
 
 - improved docs
+
+## 1.1.8
+
+- fixed typo in README

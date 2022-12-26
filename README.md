@@ -73,7 +73,7 @@ Nevertheless, I advise you to use the default values as they have been well thou
 The following three Classes can be used to defina a responsive UI in an easy, readable manner.
 
 - ### ResponsiveValue
-  The ```ResponsiveValue``` allows you to provide different values based on the curren screen size. The value it provides can be anything from a ```double``` to a ```Widget```.
+  The ```ResponsiveValue``` allows you to provide different values based on the current screen size. The value it provides can be anything from a ```double``` to a ```Widget```.
 
   Definition:
   ```dart
