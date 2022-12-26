@@ -195,7 +195,7 @@ The biggest hurdle to fast and easy application development is complexity. That 
 
 The same principle should be used to build responsive UI in my opinion.
 
-First, you just focus on building the UI for mobile phones(e.g screen size xs). And only after you have completed that step, you start to worry about the other screen sizes. Now that you have already completed the UI for mobile phones you can run it on other screen sizes, see how it looks like and use the tools from the [Creating the UI](#CreatingtheUI) section to make the proper adjustments for larger screen sizes.
+First, you just focus on building the UI for mobile phones(e.g screen size xs). And only after you have completed that step, you start to worry about the other screen sizes. Now that you have already completed the UI for mobile phones you can run it on other screen sizes, see how it looks like and use the tools from the [Creating the UI](#creatingtheui) section to make the proper adjustments for larger screen sizes.
 
 This should provide you with a fairly simple approach for building UI for all screen sizes using flutter. 
 
