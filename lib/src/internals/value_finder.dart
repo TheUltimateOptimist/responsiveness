@@ -2,42 +2,16 @@ import 'package:flutter/material.dart' show BuildContext;
 
 import '../screen_size/screen_size.dart' show ScreenSize;
 
-class _Distances {
-  int leftDistance = 0;
-  int rightDistance = 0;
-}
-
 mixin ValueFinder<T> {
-  T find(
-    BuildContext context,
-    List<T?> values,
-  ) {
-    final startIndex = ScreenSize.of(context).index;
-    final distances = _Distances();
-    final leftValue = _findLeftValue(startIndex, values, distances);
-    final rightValue = _findRightValue(startIndex, values, distances);
-    if (leftValue != null && rightValue == null) return leftValue;
-    if (rightValue != null && leftValue == null) return rightValue;
-    assert(leftValue != null && rightValue != null);
-    if (distances.leftDistance <= distances.rightDistance) {
-      return leftValue!;
+  T find(BuildContext context, List<T?> values) {
+    assert(values.length == 5, "The length of the ValueFinder's values list has to be 5");
+    assert(values[0] != null, "The first element in the values list can not be null");
+    final screenSizeIndex = ScreenSize.of(context).index;
+    for (int i = screenSizeIndex; i >= 0; i--) {
+      if (values[i] != null) {
+        return values[i]!;
+      }
     }
-    return rightValue!;
-  }
-
-  T? _findLeftValue(int index, List<T?> values, _Distances distances) {
-    if (index == 0 || values[index] != null) {
-      return values[index];
-    }
-    distances.leftDistance++;
-    return _findLeftValue(--index, values, distances);
-  }
-
-  T? _findRightValue(int index, List<T?> values, _Distances distances) {
-    if (index >= values.length - 1 || values[index] != null) {
-      return values[index];
-    }
-    distances.rightDistance++;
-    return _findRightValue(++index, values, distances);
+    throw Exception("Internal error");
   }
 }
