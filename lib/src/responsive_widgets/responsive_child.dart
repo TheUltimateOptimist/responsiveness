@@ -17,7 +17,7 @@ class ResponsiveChild extends StatelessWidget with ValueFinder<Widget> {
   ///{@macro responsive_child}
   const ResponsiveChild({
     super.key,
-    this.xs,
+    required this.xs,
     this.sm,
     this.md,
     this.lg,
@@ -26,7 +26,7 @@ class ResponsiveChild extends StatelessWidget with ValueFinder<Widget> {
   });
 
   ///the widget to use for the [xs] screen size
-  final Widget? xs;
+  final Widget xs;
 
   ///the widget to use for the [sm] screen size
   final Widget? sm;

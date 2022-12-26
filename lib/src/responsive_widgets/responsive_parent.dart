@@ -23,7 +23,7 @@ class ResponsiveParent<T> extends StatelessWidget with ValueFinder {
   ResponsiveParent({
     super.key,
     required this.child,
-    this.xs,
+    required this.xs,
     this.sm,
     this.md,
     this.lg,
@@ -35,7 +35,7 @@ class ResponsiveParent<T> extends StatelessWidget with ValueFinder {
   final T child;
 
   ///The function used to wrap the given [child] with another [Widget] for the screen size [xs]
-  final Widget Function(T child)? xs;
+  final Widget Function(T child) xs;
 
   ///The function used to wrap the given [child] with another [Widget] for the screen size [sm]
   final Widget Function(T child)? sm;
@@ -57,7 +57,7 @@ class ResponsiveParent<T> extends StatelessWidget with ValueFinder {
     return find(
       context,
       [
-        xs != null ? xs!(child) : null,
+        xs(child),
         sm != null ? sm!(child) : null,
         md != null ? md!(child) : null,
         lg != null ? lg!(child) : null,

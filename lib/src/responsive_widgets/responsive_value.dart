@@ -26,7 +26,7 @@ import '../internals/value_finder.dart';
 class ResponsiveValue<T> with ValueFinder<T> {
   ///{@macro responsive_value}
   const ResponsiveValue({
-    this.xs,
+    required this.xs,
     this.sm,
     this.md,
     this.lg,
@@ -35,7 +35,7 @@ class ResponsiveValue<T> with ValueFinder<T> {
   });
 
   ///the value to use for the screen size [xs]
-  final T? xs;
+  final T xs;
 
   ///the value to use for the screen size [xs]
   final T? sm;
