@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart'
     show Widget, StatelessWidget, BuildContext;
 
-import '../internals/value_finder.dart';
+import "selector.dart";
 
 ///{@template responsive_parent}
 ///It wraps the given [child] with different [Widget]s based on the current screen size.
@@ -17,7 +17,7 @@ import '../internals/value_finder.dart';
 ///
 ///If you also provide one for the screen size [lg] for example, the function you provided for [xs] will be used for screen sizes [xs] - [lg] and the function you provided for [lg] will be used for the screen sizes [lg] - [xxl].
 ///{@endtemplate}
-class ResponsiveParent<T> extends StatelessWidget with ValueFinder {
+class ResponsiveParent<T> extends StatelessWidget {
   ///{@macro responsive_parent}
   ResponsiveParent({
     super.key,
@@ -53,16 +53,13 @@ class ResponsiveParent<T> extends StatelessWidget with ValueFinder {
 
   @override
   Widget build(BuildContext context) {
-    return find(
-      context,
-      [
-        xs(child),
-        sm != null ? sm!(child) : null,
-        md != null ? md!(child) : null,
-        lg != null ? lg!(child) : null,
-        xl != null ? xl!(child) : null,
-        xxl != null ? xxl!(child) : null,
-      ],
-    );
+    return context.select<Widget>([
+      xs(child),
+      sm != null ? sm!(child) : null,
+      md != null ? md!(child) : null,
+      lg != null ? lg!(child) : null,
+      xl != null ? xl!(child) : null,
+      xxl != null ? xxl!(child) : null,
+    ]);
   }
 }
