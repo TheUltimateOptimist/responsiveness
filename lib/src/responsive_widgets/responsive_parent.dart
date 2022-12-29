@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart' show Widget;
-import 'package:responsiveness/src/responsive_widgets/raw/raw_responsive_parent.dart';
+import 'package:flutter/material.dart'
+    show Widget, StatelessWidget, BuildContext;
+
+import '../internals/value_finder.dart';
 
 ///{@template responsive_parent}
 ///It wraps the given [child] with different [Widget]s based on the current screen size.
@@ -15,11 +17,11 @@ import 'package:responsiveness/src/responsive_widgets/raw/raw_responsive_parent.
 ///
 ///If you also provide one for the screen size [lg] for example, the function you provided for [xs] will be used for screen sizes [xs] - [lg] and the function you provided for [lg] will be used for the screen sizes [lg] - [xxl].
 ///{@endtemplate}
-class ResponsiveParent<T> extends RawResponsiveParent<T> {
+class ResponsiveParent<T> extends StatelessWidget with ValueFinder {
   ///{@macro responsive_parent}
-  const ResponsiveParent({
+  ResponsiveParent({
     super.key,
-    required super.child,
+    required this.child,
     required this.xs,
     this.sm,
     this.md,
@@ -27,6 +29,9 @@ class ResponsiveParent<T> extends RawResponsiveParent<T> {
     this.xl,
     this.xxl,
   });
+
+  ///The Object that should be wrapped with another [Widget] based on the current screen size
+  final T child;
 
   ///The function used to wrap the given [child] with another [Widget] for the screen size [xs]
   final Widget Function(T child) xs;
@@ -47,5 +52,17 @@ class ResponsiveParent<T> extends RawResponsiveParent<T> {
   final Widget Function(T child)? xxl;
 
   @override
-  List<Widget Function(T child)?> get children => [xs, sm, md, lg, xl, xxl];
+  Widget build(BuildContext context) {
+    return find(
+      context,
+      [
+        xs(child),
+        sm != null ? sm!(child) : null,
+        md != null ? md!(child) : null,
+        lg != null ? lg!(child) : null,
+        xl != null ? xl!(child) : null,
+        xxl != null ? xxl!(child) : null,
+      ],
+    );
+  }
 }

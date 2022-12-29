@@ -1,4 +1,6 @@
-import 'package:responsiveness/src/responsive_widgets/raw/raw_responsive_value.dart';
+import 'package:flutter/material.dart' show BuildContext;
+
+import '../internals/value_finder.dart';
 
 ///{@template responsive_value}
 ///It provides different values based on the current screen size.
@@ -20,7 +22,7 @@ import 'package:responsiveness/src/responsive_widgets/raw/raw_responsive_value.d
 ///```
 ///In the above example, 10 would be used for the screen sizes xs, sm and 20 would be used for the screen sizes md, lg, xl, xxl
 ///{@endtemplate}
-class ResponsiveValue<T> extends RawResponsiveValue<T>{
+class ResponsiveValue<T> with ValueFinder<T> {
   ///{@macro responsive_value}
   const ResponsiveValue({
     required this.xs,
@@ -49,6 +51,8 @@ class ResponsiveValue<T> extends RawResponsiveValue<T>{
   ///the value to use for the screen size [xs]
   final T? xxl;
 
-  @override
-  List<T?> get values => [xs, sm, md, lg, xl, xxl];
+  ///returns the right value for the current screen size
+  T of(BuildContext context) {
+    return find(context, [xs, sm, md, lg, xl, xxl]);
+  }
 }
