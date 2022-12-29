@@ -12,7 +12,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: const MyHomePage(),
-      builder: (context, child) => ScreenSizeProvider(child: child),
     );
   }
 }
