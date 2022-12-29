@@ -31,7 +31,7 @@ enum ScreenSize{
   factory ScreenSize.of(BuildContext context){
     final width = MediaQuery.of(context).size.width;
     for(final screenSize in ScreenSize.values.reversed){
-      if(screenSize.minimumWidth >= width){
+      if(width >= screenSize.minimumWidth){
         return screenSize;
       }
     }
