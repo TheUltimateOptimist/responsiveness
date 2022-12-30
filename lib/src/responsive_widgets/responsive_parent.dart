@@ -19,7 +19,7 @@ import "selector.dart";
 ///{@endtemplate}
 class ResponsiveParent<T> extends StatelessWidget {
   ///{@macro responsive_parent}
-  ResponsiveParent({
+  const ResponsiveParent({
     super.key,
     required this.child,
     required this.xs,
