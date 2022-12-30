@@ -79,12 +79,16 @@
 
 - fixed typo in README
 
-## 1.1.9(includes breaking changes)
+## 1.1.9
 
 - got rid of ```ScreenSizeProvider``` (breaking change)
 - got rid of ```MinimumWidths``` class (breaking change)
 - ```ScreenSize``` class is now an enum (breaking change)
 - added code generation for providing custom breakpoints
+
+## 1.2.0
+
+- improved Changelog.md
 
 
 
