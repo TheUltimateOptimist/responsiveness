@@ -2,10 +2,9 @@ A minimal, easy to use responsive framework for building UI for all screen sizes
 
 - [1. Background](#background)
 - [2. Breakpoints](#breakpoints)
-- [3. Getting started](#gettingstarted)
-- [4. Creating the UI](#creatingtheui)
-- [5. Current screen size](#currentscreensize)
-- [6. Usage](#usage)
+- [3. Creating the UI](#creatingtheui)
+- [4. Custom Breakpoints](#custombreakpoints)
+- [5. Usage](#usage)
 
 ##  1. <a name='background'></a>Background
 
@@ -19,7 +18,7 @@ This package is the result of me trying to answer the above mentioned questions 
 
 ##  2. <a name='breakpoints'></a>Breakpoints
 
-This package uses the [Boostrap](https://getbootstrap.com/docs/5.0/layout/breakpoints/) breakpoints:
+This package uses the [Boostrap](https://getbootstrap.com/docs/5.0/layout/breakpoints/) breakpoints by default:
 
 |short name|long name   |minimum width|devices         |
 |----------|------------|-------------|----------------|
@@ -30,47 +29,11 @@ This package uses the [Boostrap](https://getbootstrap.com/docs/5.0/layout/breakp
 |xl        |extra large |1200         |large destkops  |
 |xxl       |xx-large    |1400         |larger destkops |
 
-The minimum widths in the above table are used by default, but you can also customize them, as shown [here](#minimumWidths).
+You can also provide custom breakpoints instead of using the default ones, as shown [here](#custombreakpoints).
 
-##  3. <a name='gettingstarted'></a>Getting started
+##  3. <a name='creatingtheui'></a>Creating the UI
 
-To use this package in your app you need to wrap you widget tree with ```ScreenSizeProvider``` like so:
-```dart
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const MyHomePage(),
-      builder: (context, child) {
-        return ScreenSizeProvider(child: child);
-      },
-    );
-  }
-}
-```
-The ```ScreenSizeProvider``` identifys the current screen size and provides that information to the subtree.
-
-<a name='minimumWidths'></a>By setting the ```minimumWidths``` parameter of the ```ScreenSizeProvider``` you can customize the minimum widths of the six screen sizes xs, sm, md, lg, xl and xxl.
-```dart
-ScreenSizeProvider(
-  minimumWidths: MinimumWidths(
-    xs: 0, //has to always remain 0
-    sm: 577,//default is 576
-    md: 800,//default is 768
-    lg: 1000,//default is 992
-    xl: 1201,//default is 1200
-    xxl: 1402,//default is 1400
-  ),
-  child: child,
-)
-```
-Nevertheless, I advise you to use the default values as they have been well thought through and have proven themselves over time.
-
-##  4. <a name='creatingtheui'></a>Creating the UI
-
-The following three Classes can be used to defina a responsive UI in an easy, readable manner.
+The following four classes can be used to defina a responsive UI in an easy, readable manner.
 
 - ### ResponsiveValue
   The ```ResponsiveValue``` allows you to provide different values based on the current screen size. The value it provides can be anything from a ```double``` to a ```Widget```.
@@ -94,7 +57,7 @@ The following three Classes can be used to defina a responsive UI in an easy, re
     );
   ```
 
-  Note that you do not need to specify a value for every screen size. You need to only provide at least the one for the screen size xs, but can also provide more than one or all. If you didn't provide a value for a screen size, the value from the next smallest screen size with a defined value will be used.
+  Note that you do not need to specify a value for every screen size. You need to only provide at least the one for the screen size xs, but can also provide more than one or all. If you didn't provide a value for a screen size, the value from the next smaller defined screen size will be used.
 
   For example consider:
   ```dart
@@ -122,7 +85,7 @@ The following three Classes can be used to defina a responsive UI in an easy, re
 - ### ResponsiveParent
   ```The ResponsiveParent``` widget allows you to wrap a given ```Object``` with different ```Widget```s based on the current screen size.   
   To wrap the ```Object``` that you provided using the ```child``` parameter, you need to specify a callback for at least the screen size xs. This callback receives the given ```child```  as a parameter and returns a new ```Widget```. Inside the callback you can for example wrap the ```child``` with a ```Column``` or ```Row``` and return the newly created ```Widget```
-  Just like in the case of ```ResponsiveValue``` and ```ResponsiveChild``` the callback of the nearest smaller screen size will be used if it is not defined for a particular screen size.
+  Just like in the case of ```ResponsiveValue``` and ```ResponsiveChild``` the callback of the nearest smaller defined screen size will be used if it was not provided for a particular screen size.
   
   In code:
   ```dart
@@ -136,52 +99,57 @@ The following three Classes can be used to defina a responsive UI in an easy, re
     );
   ```
 
-##  5. <a name='currentscreensize'></a>Current ```ScreenSize```
+  In the above example, a ```Column``` will be displayed for the screen sizes xs and sm whereas a ```Row``` will be displayed for the screen sizes md - xxl.
 
-Even though the classes from the [Creating the UI](#CreatingtheUI) section should usually be enough, it is also possible to determine the current screen size and perform custom logic based on the result.
+- ### Current ```ScreenSize```
+  Even though ```ResponsiveValue```, ```ResponsiveChild``` and ```ResponsiveParent``` should usually be enough, it is also possible to determine the current screen size and perform custom logic based on the result.
 
-Given the ```BuildContext``` you can use ```ScreenSize.of(context)``` to get the current ```ScreenSize```.
+  Given the ```BuildContext``` you can use ```ScreenSize.of(context)``` to get the current ```ScreenSize```.
 
-The ```ScreenSize``` object exposes the ```index``` and the ```minimumWidth``` field.
+  Apart from the default fields that an enum exposes, the ```ScreenSize``` enum exposes the ```minimumWidth``` field. If ```xxl``` is the current ```ScreenSize``` for example, the ```minimumWidth``` field will be equal to 1400.
 
-The index field ranges from 0 to 5 and tells you the current screen size.
-
-0 -> ```xs```, 1 -> ```sm```, 2 -> ```md```, 3 -> ```lg```, 4 -> ```xl```, 5 -> ```xxl```.
-
-In code:
-```dart
-@override
-Widget build(BuildContext context){
-  final index = ScreenSize.of(context).index;
-  if(index == ScreenSize.xs){
-    //return some widget
+  The ```ScreenSize``` enum could be used like so:
+  ```dart
+  @override
+  Widget build(BuildContext context){
+    final screenSize = ScreenSize.of(context);
+    if(screenSize == ScreenSize.xs){
+      return Text(screenSize.minimumWidth)//same as Text("0")
+    }
+    else if(screenSize == ScreenSize.sm){
+      return Text(screenSize.minimumWidth)//same as Text("576")
+    }
+    else{
+      return Text("some text")
+    }
   }
-  else if(index == ScreenSize.sm){
-    //return some widget
+  ```
+
+##  4. <a name='custombreakpoints'></a>Custom Breakpoints
+
+Instead of using the default ones, you can provide custom breakpoints with the help of code generation.
+
+In the following, I will show you how to do this with the screen sizes small, medium, large as an example.
+
+- At the root of your project, create a file called 'screen_sizes.json'.
+- Inside 'screen_sizes.json' you need to define the different screen sizes inside a map. The key is the name of the screen size and the value is the minimum width for that screen size. The key needs to   be a String whereas the value needs to be an int.
+
+  Example screen_sizes.json:
+  ```json
+  {
+    "small": 0,
+    "medium": 500,
+    "large": 1000
   }
-  else{
-    //return some widget
-  }
-}
-```
+  ```
 
-The ```minimumWidth``` field exposes the minimum width of the current screen size. 
+- Run the command ```dart run responsiveness``` from the root of your project. This will generate a file called 'responsiveness.dart' under the lib directory of your project.
+- Instead of importing this package at the top of your files, import the file, generated in the previous step:
+  ```dart
+  import "package:<your-project-name>/responsiveness.dart";
+  ```
 
-Whenever the curren screen size is ```lg``` for example, ```minimumWidth``` will be equal to ```992```.
-
-In code:
-```dart
-@override
-Widget build(BuildContext context){
-  final screenSize = ScreenSize.of(context);
-  if(screenSize.index == ScreenSize.lg){
-    return Text(screenSize.minimumWidth.toString()) //same as Text('992')
-  }
-  return Text("other text")
-}
-```
-
-##  6. <a name='usage'></a>Usage
+##  5. <a name='usage'></a>Usage
 
 The tools described above allow you to build responsive UI for all screen sizes easily. But how can you best apply them. Here is my recommendation.
 
@@ -194,6 +162,3 @@ First, you just focus on building the UI for mobile phones(e.g screen size xs). 
 This should provide you with a fairly simple approach for building UI for all screen sizes using flutter. 
 
 I wish you best of luck for your software project.
-
-
-

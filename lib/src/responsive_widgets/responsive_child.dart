@@ -26,22 +26,22 @@ class ResponsiveChild extends StatelessWidget{
     this.xxl,
   });
 
-  ///the widget to use for the [xs] screen size
+  ///the widget to use for the screen size [xs]
   final Widget xs;
 
-  ///the widget to use for the [sm] screen size
+  ///the widget to use for the screen size [sm]
   final Widget? sm;
 
-  ///the widget to use for the [md] screen size
+  ///the widget to use for the screen size [md]
   final Widget? md;
 
-  ///the widget to use for the [lg] screen size
+  ///the widget to use for the screen size [lg]
   final Widget? lg;
 
-  ///the widget to use for the [xl] screen size
+  ///the widget to use for the screen size [xl]
   final Widget? xl;
 
-  ///the widget to use for the [xxl] screen size
+  ///the widget to use for the screen size [xxl]
   final Widget? xxl;
 
   @override

@@ -20,7 +20,7 @@ import 'selector.dart';
 ///return Text(style: TextStyle(fontSize: fontSize.of(context)))
 ///}
 ///```
-///In the above example, 10 would be used for the screen sizes xs, sm and 20 would be used for the screen sizes md, lg, xl, xxl
+///In the above example, 10 would be used for the screen sizes xs, sm and 20 would be used for the screen sizes md, lg, xl, xxl.
 ///{@endtemplate}
 class ResponsiveValue<T>{
   ///{@macro responsive_value}
