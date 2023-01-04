@@ -90,5 +90,10 @@
 
 - improved Changelog.md
 
+## 1.2.1
+
+- fixed typo
+- small refactor
+
 
 

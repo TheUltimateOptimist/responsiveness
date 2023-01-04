@@ -15,14 +15,14 @@ class ScreenSizes{
       throw Exception("Parsing the screen_sizes.json content to a Map<String, int> failed. Please make sure, that the contents of screen_sizes.json can be parsed to a Map<String, int>.");
     }
     final screenSizeEntries = screenSizes.entries.toList();
-    ScreenSizes.validateScreenSizeEntris(screenSizeEntries);
+    ScreenSizes.validateScreenSizeEntries(screenSizeEntries);
     screenSizeEntries.sort((a, b) => a.value.compareTo(b.value));
     final names = screenSizeEntries.map((entry) => entry.key).toList();
     final minimumWidths = screenSizeEntries.map((entry) => entry.value).toList();
     return ScreenSizes(names, minimumWidths);
   }
 
-  static void validateScreenSizeEntris(List<MapEntry<String, int>> screenSizeEntries){
+  static void validateScreenSizeEntries(List<MapEntry<String, int>> screenSizeEntries){
     if(screenSizeEntries.length < 2){
       throw Exception("You provided less than 2 different screen sizes in screen_sizes.json. Please provide at least 2 different screen sizes.");
     }

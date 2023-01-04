@@ -4,11 +4,18 @@ import 'package:responsiveness/src/generators/generators.dart';
 import 'package:responsiveness/src/generators/screen_sizes.dart';
 
 void main(List<String> args) {
-  String root = Directory.current.path;
+  final root = Directory.current.path;
+  final screenSizes = readScreenSizesFromJsonFile(root);
+  final sourceCode = generateSourceCode(screenSizes);
+  createSourceCodeFile(root, sourceCode);
+}
+
+ScreenSizes readScreenSizesFromJsonFile(String root){
   File file = File("$root/screen_sizes.json");
-  final screenSizes = ScreenSizes.fromJsonString(file.readAsStringSync());
-  File generatedFile = File("$root/lib/responsiveness.dart");
-  generatedFile.createSync();
+  return ScreenSizes.fromJsonString(file.readAsStringSync());
+}
+
+String generateSourceCode(ScreenSizes screenSizes){
   final generators = [
     GeneratedFileWarningGenerator(),
     DependencyGenerator(),
@@ -18,10 +25,16 @@ void main(List<String> args) {
     ResponsiveParentGenerator(),
     SelectorGenerator(),
   ];
-  String output = "";
+  String sourceCode = "";
   for (var generator in generators) {
-    output += generator.generateSourceCode(screenSizes);
-    output += "\n";
+    sourceCode += generator.generateSourceCode(screenSizes);
+    sourceCode += "\n";//seperates different sections in source code with an empty line
   }
-  generatedFile.writeAsStringSync(output);
+  return sourceCode;
+}
+
+void createSourceCodeFile(String root, String sourceCode){
+  File sourceCodeFile = File("$root/lib/responsiveness.dart");
+  sourceCodeFile.createSync();
+  sourceCodeFile.writeAsStringSync(sourceCode);
 }
