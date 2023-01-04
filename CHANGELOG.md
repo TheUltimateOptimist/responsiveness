@@ -92,7 +92,7 @@
 
 ## 1.2.1
 
-- fixed typo
+- fixed typos
 - small refactor
 
 

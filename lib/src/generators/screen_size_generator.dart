@@ -34,7 +34,7 @@ ${_generateNames(screenSizes)}
         return screenSize;
       }
     }
-    throw Exception("Error: It was not possible to determine a ScreenSize for the curren screen width");
+    throw Exception("Error: It was not possible to determine a ScreenSize for the current screen width");
   }
 }
 """;
