@@ -24,8 +24,8 @@ import 'selector.dart';
 ///{@endtemplate}
 class ResponsiveValue<T> {
   ///{@macro responsive_value}
-  const ResponsiveValue(
-    this.additionalValues, {
+  const ResponsiveValue({
+    this.additionalValues,
     required this.xs,
     this.sm,
     this.md,

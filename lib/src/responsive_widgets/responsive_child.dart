@@ -16,8 +16,8 @@ import 'selector.dart';
 ///{@endtemplate}
 class ResponsiveChild extends StatelessWidget {
   ///{@macro responsive_child}
-  const ResponsiveChild(
-    this.additionalWidgets, {
+  const ResponsiveChild({
+    this.additionalWidgets,
     super.key,
     required this.xs,
     this.sm,
