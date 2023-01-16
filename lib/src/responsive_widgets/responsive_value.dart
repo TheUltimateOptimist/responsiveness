@@ -22,9 +22,10 @@ import 'selector.dart';
 ///```
 ///In the above example, 10 would be used for the screen sizes xs, sm and 20 would be used for the screen sizes md, lg, xl, xxl.
 ///{@endtemplate}
-class ResponsiveValue<T>{
+class ResponsiveValue<T> {
   ///{@macro responsive_value}
-  const ResponsiveValue({
+  const ResponsiveValue(
+    this.additionalValues, {
     required this.xs,
     this.sm,
     this.md,
@@ -51,8 +52,20 @@ class ResponsiveValue<T>{
   ///the value to use for the screen size [xs]
   final T? xxl;
 
+  ///holds additional values for screen sizes larger than the minimum width of the value's key
+  final Map<int, T>? additionalValues;
+
   ///returns the right value for the current screen size
   T of(BuildContext context) {
-    return context.select<T>([xs, sm , md, lg, xl, xxl]);
+    final values = ValuesForAllScreenSizes(
+      xs: xs,
+      sm: sm,
+      md: md,
+      lg: lg,
+      xl: xl,
+      xxl: xxl,
+      additionalValues: additionalValues,
+    );
+    return context.select<T>(values);
   }
 }

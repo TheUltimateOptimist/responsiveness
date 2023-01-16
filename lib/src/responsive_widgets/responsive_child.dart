@@ -14,9 +14,10 @@ import 'selector.dart';
 ///
 ///If you also provide a widget for the screen size [lg] for example, the widget you provided for [xs] will be used for screen sizes [xs] - [lg] and the widget you provided for [lg] will be used for the screen sizes [lg] - [xxl].
 ///{@endtemplate}
-class ResponsiveChild extends StatelessWidget{
+class ResponsiveChild extends StatelessWidget {
   ///{@macro responsive_child}
-  const ResponsiveChild({
+  const ResponsiveChild(
+    this.additionalWidgets, {
     super.key,
     required this.xs,
     this.sm,
@@ -44,8 +45,20 @@ class ResponsiveChild extends StatelessWidget{
   ///the widget to use for the screen size [xxl]
   final Widget? xxl;
 
+  ///holds additional widgets for screen sizes larger than the minimum width of the widget's key
+  final Map<int, Widget>? additionalWidgets;
+
   @override
   Widget build(BuildContext context) {
-    return context.select<Widget>([xs, sm, md, lg, xl, xxl]);
+    final widgets = ValuesForAllScreenSizes(
+      xs: xs,
+      sm: sm,
+      md: md,
+      lg: lg,
+      xl: xl,
+      xxl: xxl,
+      additionalValues: additionalWidgets,
+    );
+    return context.select<Widget>(widgets);
   }
 }

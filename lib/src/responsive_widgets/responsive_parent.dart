@@ -19,7 +19,8 @@ import "selector.dart";
 ///{@endtemplate}
 class ResponsiveParent<T> extends StatelessWidget {
   ///{@macro responsive_parent}
-  const ResponsiveParent({
+  const ResponsiveParent(
+    this.additionalCallbacks, {
     super.key,
     required this.child,
     required this.xs,
@@ -51,15 +52,23 @@ class ResponsiveParent<T> extends StatelessWidget {
   ///the callback used to wrap the given [child] with another [Widget] for the screen size [xxl]
   final Widget Function(T child)? xxl;
 
+  ///holds additional callbacks for screen sizes larger than the minimum width of the callback's key
+  final Map<int, Widget Function(T child)>? additionalCallbacks;
+
   @override
   Widget build(BuildContext context) {
-    return context.select<Widget>([
-      xs(child),
-      sm != null ? sm!(child) : null,
-      md != null ? md!(child) : null,
-      lg != null ? lg!(child) : null,
-      xl != null ? xl!(child) : null,
-      xxl != null ? xxl!(child) : null,
-    ]);
+    final additionalWidgets = additionalCallbacks?.map(
+      (key, value) => MapEntry(key, value(child)),
+    );
+    final widgets = ValuesForAllScreenSizes(
+      xs: xs(child),
+      sm: sm != null ? sm!(child) : null,
+      md: md != null ? md!(child) : null,
+      lg: lg != null ? lg!(child) : null,
+      xl: xl != null ? xl!(child) : null,
+      xxl: xxl != null ? xxl!(child) : null,
+      additionalValues: additionalWidgets,
+    );
+    return context.select<Widget>(widgets);
   }
 }
