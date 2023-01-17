@@ -52,7 +52,7 @@ ${_getClassFields(screenSizes.names)}
     final additionalWidgets = additionalCallbacks?.map(
       (key, value) => MapEntry(key, value(child)),
     );
-    final widgets = ValuesForAllScreenSizes(
+    final widgets = _ValuesForAllScreenSizes(
       $firstName: $firstName(child),
 ${_getWidgets(screenSizes.names)}
       additionalValues: additionalWidgets,

@@ -42,8 +42,8 @@ ${_getClassFields(screenSizes.names)}
 
   @override
   Widget build(BuildContext context) {
-    final widgets = ValuesForAllScreenSizes(
-${screenSizes.names.map((name) => "$name:$name,").join("\n")}
+    final widgets = _ValuesForAllScreenSizes(
+${screenSizes.names.map((name) => "      $name:$name,").join("\n")}
       additionalValues: additionalWidgets,
     );
     return context.select<Widget>(widgets);

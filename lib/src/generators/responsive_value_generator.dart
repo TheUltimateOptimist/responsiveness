@@ -49,8 +49,8 @@ ${_getClassFields(screenSizes.names)}
 
   ///returns the right value for the current screen size
   T of(BuildContext context) {
-    final values = ValuesForAllScreenSizes(
-${screenSizes.names.map((name) => "$name:$name,").join("\n")}
+    final values = _ValuesForAllScreenSizes(
+${screenSizes.names.map((name) => "      $name:$name,").join("\n")}
       additionalValues: additionalValues,
     );
     return context.select<T>(values);
