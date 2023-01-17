@@ -72,12 +72,11 @@ ${_getWidgets(screenSizes.names)}
   }
 
   String _getClassFields(List<String> names) {
-    String result = "";
+    final extendedNames = List<String>.empty(growable: true);
     for (int i = 1; i < names.length; i++) {
-      result +=
-          "  ///The function used to wrap the given [child] with another [Widget] for the screen size [${names[i]}]\n  final Widget Function(T child)? ${names[i]};\n\n";
+      extendedNames.add("  ///The function used to wrap the given [child] with another [Widget] for the screen size [${names[i]}]\n  final Widget Function(T child)? ${names[i]};");
     }
-    return result;
+    return extendedNames.join("\n\n");
   }
 
   String _getWidgets(List<String> names) {

@@ -61,11 +61,10 @@ ${screenSizes.names.map((name) => "      $name:$name,").join("\n")}
   }
 
   String _getClassFields(List<String> names) {
-    var result = "";
+    final extendedNames = List<String>.empty(growable: true);
     for (int i = 1; i < names.length; i++) {
-      result +=
-          "  ///the widget to use for the screen size [${names[i]}]\n  final Widget? ${names[i]};\n\n";
+      extendedNames.add("  ///the widget to use for the screen size [${names[i]}]\n  final Widget? ${names[i]};");
     }
-    return result;
+    return extendedNames.join("\n\n");
   }
 }
