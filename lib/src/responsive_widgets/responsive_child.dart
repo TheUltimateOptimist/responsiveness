@@ -18,7 +18,6 @@ import 'selector.dart';
 ///by giving the [additionalWidgets] parameter a map of key, value pairs.
 ///The key is the minimum width, for which the widget, provided as the
 ///corresponding value, will be used.
-///
 ///{@endtemplate}
 class ResponsiveChild extends StatelessWidget {
   ///{@macro responsive_child}

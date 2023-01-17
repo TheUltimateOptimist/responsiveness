@@ -17,7 +17,11 @@ class ResponsiveValueGenerator implements Generator{
 ///
 ///If you didn't provide a value for a screen size, the value from the next smaller defined screen size will be used.
 ///
-///It could be used to apply different fontSizes for different screen sizes like so:
+///Added to the above, you can also provide [additionalValues] for custom screen sizes
+///by giving the [additionalValues] parameter a map of key, value pairs.
+///The key is the minimum width, for which the value will be used.
+///
+///[ResponsiveValue] could be used to apply different fontSizes for different screen sizes like so:
 ///```dart
 ///static const fontSize = ResponsiveValue<double>($firstName: 10, $secondName: 20);
 ///@override
@@ -31,6 +35,7 @@ class ResponsiveValue<T>{
   ///{@macro responsive_value}
   const ResponsiveValue({
     required this.$firstName,
+    this.additionalValues,
 ${_getConstructorParameters(screenSizes.names)}
   });
 
@@ -38,9 +43,17 @@ ${_getConstructorParameters(screenSizes.names)}
   final T $firstName;
 
 ${_getClassFields(screenSizes.names)}
+
+  ///holds additional values for screen sizes larger than the minimum width of the value's key
+  final Map<int, T>? additionalValues;
+
   ///returns the right value for the current screen size
   T of(BuildContext context) {
-    return context.select<T>([${screenSizes.names.join(', ')}]);
+    final values = ValuesForAllScreenSizes(
+${screenSizes.names.map((name) => "$name:$name,").join("\n")}
+      additionalValues: additionalValues,
+    );
+    return context.select<T>(values);
   }
 }
 """;

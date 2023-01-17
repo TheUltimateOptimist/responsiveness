@@ -17,11 +17,17 @@ class ResponsiveChildGenerator implements Generator {
 ///If you only provide a widget for the screen size [$firstName], the given widget will be used for all screen sizes.
 ///
 ///If you didn't provide a widget for a screen size, the widget from the next smaller defined screen size will be used.
+///
+///Added to the above, you can also provide [additionalWidgets] for custom screen sizes
+///by giving the [additionalWidgets] parameter a map of key, value pairs.
+///The key is the minimum width, for which the widget, provided as the
+///corresponding value, will be used.
 ///{@endtemplate}
 class ResponsiveChild extends StatelessWidget{
   ///{@macro responsive_child}
   const ResponsiveChild({
     super.key,
+    this.additionalWidgets,
     required this.$firstName,
 ${_getConstructorParameters(screenSizes.names)}
   });
@@ -30,16 +36,24 @@ ${_getConstructorParameters(screenSizes.names)}
   final Widget $firstName;
 
 ${_getClassFields(screenSizes.names)}
+
+  ///holds additional widgets for screen sizes larger than the minimum width of the widget's key
+  final Map<int, Widget>? additionalWidgets;
+
   @override
   Widget build(BuildContext context) {
-    return context.select<Widget>([${screenSizes.names.join(', ')}]);
+    final widgets = ValuesForAllScreenSizes(
+${screenSizes.names.map((name) => "$name:$name,").join("\n")}
+      additionalValues: additionalWidgets,
+    );
+    return context.select<Widget>(widgets);
   }
 }
 """;
   }
 
   String _getConstructorParameters(List<String> names) {
-    String result = "";
+    var result = "";
     for (int i = 1; i < names.length; i++) {
       result += "    this.${names[i]},\n";
     }
@@ -47,7 +61,7 @@ ${_getClassFields(screenSizes.names)}
   }
 
   String _getClassFields(List<String> names) {
-    String result = "";
+    var result = "";
     for (int i = 1; i < names.length; i++) {
       result +=
           "  ///the widget to use for the screen size [${names[i]}]\n  final Widget? ${names[i]};\n\n";

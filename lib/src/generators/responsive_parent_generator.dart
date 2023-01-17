@@ -20,10 +20,16 @@ class ResponsiveParentGenerator implements Generator{
 ///If you only provide one for the screen size [$firstName], the given callback will be used for all screen sizes.
 ///
 ///If you didn't provide a widget returning callback for a screen size, the one from the next smaller defined screen size will be used.
+///
+///Added to the above, you can also provide [additionalCallbacks] for custom screen sizes
+///by giving the [additionalCallbacks] parameter a map of key, value pairs.
+///The key is the minimum width, for which the callback, provided as the
+///corresponding value, will be used.
 ///{@endtemplate}
 class ResponsiveParent<T> extends StatelessWidget {
   ///{@macro responsive_parent}
   const ResponsiveParent({
+    this.additionalCallbacks,
     super.key,
     required this.child,
     required this.$firstName,
@@ -37,12 +43,21 @@ ${_getConstructorParameters(screenSizes.names)}
   final Widget Function(T child) $firstName;
 
 ${_getClassFields(screenSizes.names)}
+
+  ///holds additional callbacks for screen sizes larger than the minimum width of the callback's key
+  final Map<int, Widget Function(T child)>? additionalCallbacks;
+
   @override
   Widget build(BuildContext context) {
-    return context.select<Widget>([
-      $firstName(child),
+    final additionalWidgets = additionalCallbacks?.map(
+      (key, value) => MapEntry(key, value(child)),
+    );
+    final widgets = ValuesForAllScreenSizes(
+      $firstName: $firstName(child),
 ${_getWidgets(screenSizes.names)}
-    ]);
+      additionalValues: additionalWidgets,
+    );
+    return context.select<Widget>(widgets);
   }
 }
 """;
@@ -66,11 +81,11 @@ ${_getWidgets(screenSizes.names)}
   }
 
   String _getWidgets(List<String> names) {
-    String result = "";
+    final extendedNames = List<String>.empty(growable: true);
     for (int i = 1; i < names.length; i++) {
       final name = names[i];
-      result += "      $name != null ? $name!(child) : null,\n";
+      extendedNames.add("      $name: $name != null ? $name!(child) : null,");
     }
-    return result;
+    return extendedNames.join("\n");
   }  
 }
