@@ -13,6 +13,12 @@ import 'selector.dart';
 ///If you only provide a widget for the screen size [xs], the given widget will be used for all screen sizes.
 ///
 ///If you also provide a widget for the screen size [lg] for example, the widget you provided for [xs] will be used for screen sizes [xs] - [lg] and the widget you provided for [lg] will be used for the screen sizes [lg] - [xxl].
+///
+///Added to the above, you can also provide [additionalWidgets] for custom screen sizes
+///by giving the [additionalWidgets] parameter a map of key, value pairs.
+///The key is the minimum width, for which the widget, provided as the
+///corresponding value, will be used.
+///
 ///{@endtemplate}
 class ResponsiveChild extends StatelessWidget {
   ///{@macro responsive_child}

@@ -16,6 +16,12 @@ import "selector.dart";
 ///If you only provide one for the screen size [xs], the given callback will be used for all screen sizes.
 ///
 ///If you also provide one for the screen size [lg] for example, the callback you provided for [xs] will be used for screen sizes [xs] - [lg] and the callback you provided for [lg] will be used for the screen sizes [lg] - [xxl].
+///
+///Added to the above, you can also provide [additionalCallbacks] for custom screen sizes
+///by giving the [additionalCallbacks] parameter a map of key, value pairs.
+///The key is the minimum width, for which the callback, provided as the
+///corresponding value, will be used.
+///
 ///{@endtemplate}
 class ResponsiveParent<T> extends StatelessWidget {
   ///{@macro responsive_parent}

@@ -12,7 +12,11 @@ import 'selector.dart';
 ///
 ///If you also provide a value for the screen size [lg] for example, the value you provided for [xs] will be used for screen sizes [xs] - [lg] and the value you provided for [lg] will be used for the screen sizes [lg] - [xxl].
 ///
-///It could be used to apply different fontSizes for different screen sizes like so:
+///Added to the above, you can also provide [additionalValues] for custom screen sizes
+///by giving the [additionalValues] parameter a map of key, value pairs.
+///The key is the minimum width, for which the value will be used.
+///
+///[ResponsiveValue] could be used to apply different fontSizes for different screen sizes like so:
 ///```dart
 ///static const fontSize = ResponsiveValue<double>(xs: 10, md: 20);
 ///@override
