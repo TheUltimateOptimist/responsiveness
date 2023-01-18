@@ -61,17 +61,17 @@ ${_generateNames(screenSizes)}
   String _generateScreenSizeTable(ScreenSizes screenSizes) {
     const nameLength = 4;
     const nameAdditional = 17;
-    int largestNameLength = nameLength;
+    int largestNameLength = 0;
     for (var name in screenSizes.names) {
       if (name.length > largestNameLength) {
         largestNameLength = name.length;
       }
     }
     final nameColumnLength = largestNameLength + nameAdditional;
-    const indexColumnLength = 5;
+    const indexColumnLength = 6;
     const minimumWidthColumnLength = 13;
     final tableRows = [
-      "///|name${' ' * (nameColumnLength - nameLength)}|index|minimum width|",
+      "///|name${' ' * (nameColumnLength - nameLength)}|index |minimum width|",
       "///|:${'-' * (nameColumnLength - 2)}:|:${'-' * (indexColumnLength - 2)}:|:${'-' * (minimumWidthColumnLength - 2)}:|",
     ];
     for (int i = 0; i < screenSizes.names.length; i++) {

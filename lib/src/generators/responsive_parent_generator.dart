@@ -75,7 +75,7 @@ ${_getWidgets(screenSizes.names)}
     final names = screenSizes.names;
     final extendedNames = List<String>.empty(growable: true);
     for (int i = 1; i < names.length; i++) {
-      extendedNames.add("  ///The function used to wrap the given [child] with another [Widget] for screen sizes >= [${screenSizes.minimumWidths[i]}]\n  final Widget Function(T child)? ${names[i]};");
+      extendedNames.add("  ///The function used to wrap the given [child] with another [Widget] for screen sizes >= ${screenSizes.minimumWidths[i]}\n  final Widget Function(T child)? ${names[i]};");
     }
     return extendedNames.join("\n\n");
   }
