@@ -32,22 +32,22 @@ class ResponsiveChild extends StatelessWidget {
     this.xxl,
   });
 
-  ///the widget to use for the screen size [xs]
+  ///the widget to use for screen sizes >= 0
   final Widget xs;
 
-  ///the widget to use for the screen size [sm]
+  ///the widget to use for screen sizes >= 576
   final Widget? sm;
 
-  ///the widget to use for the screen size [md]
+  ///the widget to use for screen sizes >= 768
   final Widget? md;
 
-  ///the widget to use for the screen size [lg]
+  ///the widget to use for screen sizes >= 992
   final Widget? lg;
 
-  ///the widget to use for the screen size [xl]
+  ///the widget to use for screen sizes >= 1200
   final Widget? xl;
 
-  ///the widget to use for the screen size [xxl]
+  ///the widget to use for screen sizes >= 1400
   final Widget? xxl;
 
   ///holds additional widgets for screen sizes larger than the minimum width of the widget's key

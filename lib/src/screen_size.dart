@@ -9,6 +9,15 @@ import 'package:flutter/material.dart' show BuildContext, MediaQuery;
 ///```
 ///it exposes the [index] and the [minimumWidth] of the current [ScreenSize]
 ///
+///### Screensizes:
+///|name                |index  |minimum width|devices         |
+///|:------------------:|:-----:|:-----------:|:--------------:|
+///|```ScreenSize.xs``` |0      |0            |portrait phones |
+///|```ScreenSize.sm``` |1      |576          |landscape phones|
+///|```ScreenSize.md``` |2      |768          |tablets         |
+///|```ScreenSize.lg``` |3      |992          |destkops        |
+///|```ScreenSize.xl``` |4      |1200         |large destkops  |
+///|```ScreenSize.xxl```|5      |1400         |larger destkops |
 ///{@endtemplate}
 enum ScreenSize{
   xs(0),

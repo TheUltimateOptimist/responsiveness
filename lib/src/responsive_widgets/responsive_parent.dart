@@ -40,22 +40,22 @@ class ResponsiveParent<T> extends StatelessWidget {
   ///the Object that should be wrapped with another [Widget] based on the current screen size
   final T child;
 
-  ///the callback used to wrap the given [child] with another [Widget] for the screen size [xs]
+  ///the callback used to wrap the given [child] with another [Widget] for screen sizes >= 0
   final Widget Function(T child) xs;
 
-  ///the callback used to wrap the given [child] with another [Widget] for the screen size [sm]
+  ///the callback used to wrap the given [child] with another [Widget] for screen sizes >= 576
   final Widget Function(T child)? sm;
 
-  ///the callback used to wrap the given [child] with another [Widget] for the screen size [md]
+  ///the callback used to wrap the given [child] with another [Widget] for screen sizes >= 768
   final Widget Function(T child)? md;
 
-  ///the callback used to wrap the given [child] with another [Widget] for the screen size [lg]
+  ///the callback used to wrap the given [child] with another [Widget] for screen sizes >= 992
   final Widget Function(T child)? lg;
 
-  ///the callback used to wrap the given [child] with another [Widget] for the screen size [xl]
+  ///the callback used to wrap the given [child] with another [Widget] for screen sizes >= 1200
   final Widget Function(T child)? xl;
 
-  ///the callback used to wrap the given [child] with another [Widget] for the screen size [xxl]
+  ///the callback used to wrap the given [child] with another [Widget] for screen sizes >= 1400
   final Widget Function(T child)? xxl;
 
   ///holds additional callbacks for screen sizes larger than the minimum width of the callback's key

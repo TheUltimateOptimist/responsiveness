@@ -38,22 +38,22 @@ class ResponsiveValue<T> {
     this.xxl,
   });
 
-  ///the value to use for the screen size [xs]
+  ///the value to use for screen sizes >= 0
   final T xs;
 
-  ///the value to use for the screen size [xs]
+  ///the value to use for screen sizes >= 576
   final T? sm;
 
-  ///the value to use for the screen size [xs]
+  ///the value to use for screen sizes >= 768
   final T? md;
 
-  ///the value to use for the screen size [xs]
+  ///the value to use for screen sizes >= 992
   final T? lg;
 
-  ///the value to use for the screen size [xs]
+  ///the value to use for screen sizes >= 1200
   final T? xl;
 
-  ///the value to use for the screen size [xs]
+  ///the value to use for screen sizes >= 1400
   final T? xxl;
 
   ///holds additional values for screen sizes larger than the minimum width of the value's key
