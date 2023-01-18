@@ -35,7 +35,7 @@ ${_getConstructorParameters(screenSizes.names)}
   ///the widget to use for the screen size [$firstName]
   final Widget $firstName;
 
-${_getClassFields(screenSizes.names)}
+${_getClassFields(screenSizes)}
 
   ///holds additional widgets for screen sizes larger than the minimum width of the widget's key
   final Map<int, Widget>? additionalWidgets;
@@ -60,10 +60,11 @@ ${screenSizes.names.map((name) => "      $name:$name,").join("\n")}
     return result;
   }
 
-  String _getClassFields(List<String> names) {
+  String _getClassFields(ScreenSizes screenSizes) {
+    final names = screenSizes.names;
     final extendedNames = List<String>.empty(growable: true);
     for (int i = 1; i < names.length; i++) {
-      extendedNames.add("  ///the widget to use for the screen size [${names[i]}]\n  final Widget? ${names[i]};");
+      extendedNames.add("  ///the widget to use for screen sizes >= [${screenSizes.minimumWidths[i]}]\n  final Widget? ${names[i]};");
     }
     return extendedNames.join("\n\n");
   }

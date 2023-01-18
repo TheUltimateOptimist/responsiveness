@@ -14,6 +14,8 @@ class ScreenSizeGenerator implements Generator {
 ///```
 ///it exposes the [index] and the [minimumWidth] of the current [ScreenSize]
 ///
+///### Screensizes:
+${_generateScreenSizeTable(screenSizes)}
 ///{@endtemplate}
 enum ScreenSize{
 ${_generateNames(screenSizes)}
@@ -54,5 +56,35 @@ ${_generateNames(screenSizes)}
       result += "\n";
     }
     return result;
+  }
+
+  String _generateScreenSizeTable(ScreenSizes screenSizes) {
+    const nameLength = 4;
+    const nameAdditional = 17;
+    int largestNameLength = nameLength;
+    for (var name in screenSizes.names) {
+      if (name.length > largestNameLength) {
+        largestNameLength = name.length;
+      }
+    }
+    final nameColumnLength = largestNameLength + nameAdditional;
+    const indexColumnLength = 5;
+    const minimumWidthColumnLength = 13;
+    final tableRows = [
+      "///|name${' ' * (nameColumnLength - nameLength)}|index|minimum width|",
+      "///|:${'-' * (nameColumnLength - 2)}:|:${'-' * (indexColumnLength - 2)}:|:${'-' * (minimumWidthColumnLength - 2)}:|",
+    ];
+    for (int i = 0; i < screenSizes.names.length; i++) {
+      final name = screenSizes.names[i];
+      final minimumWidth = screenSizes.minimumWidths[i].toString();
+      final index = i.toString();
+      final nameColumn =
+          "///|```ScreenSize.$name```${' ' * (largestNameLength - name.length)}|";
+      final indexColumn = "$index${' ' * (indexColumnLength - index.length)}|";
+      final minimumWidthColunn =
+          "$minimumWidth${' ' * (minimumWidthColumnLength - minimumWidth.length)}|";
+      tableRows.add(nameColumn + indexColumn + minimumWidthColunn);
+    }
+    return tableRows.join("\n");
   }
 }

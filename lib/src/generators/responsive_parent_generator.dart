@@ -42,7 +42,7 @@ ${_getConstructorParameters(screenSizes.names)}
   ///The function used to wrap the given [child] with another [Widget] for the screen size [$firstName]
   final Widget Function(T child) $firstName;
 
-${_getClassFields(screenSizes.names)}
+${_getClassFields(screenSizes)}
 
   ///holds additional callbacks for screen sizes larger than the minimum width of the callback's key
   final Map<int, Widget Function(T child)>? additionalCallbacks;
@@ -71,10 +71,11 @@ ${_getWidgets(screenSizes.names)}
     return result;
   }
 
-  String _getClassFields(List<String> names) {
+  String _getClassFields(ScreenSizes screenSizes) {
+    final names = screenSizes.names;
     final extendedNames = List<String>.empty(growable: true);
     for (int i = 1; i < names.length; i++) {
-      extendedNames.add("  ///The function used to wrap the given [child] with another [Widget] for the screen size [${names[i]}]\n  final Widget Function(T child)? ${names[i]};");
+      extendedNames.add("  ///The function used to wrap the given [child] with another [Widget] for screen sizes >= [${screenSizes.minimumWidths[i]}]\n  final Widget Function(T child)? ${names[i]};");
     }
     return extendedNames.join("\n\n");
   }

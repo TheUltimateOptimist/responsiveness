@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'generator.dart';
 import 'screen_sizes.dart';
 
@@ -42,7 +44,7 @@ ${_getConstructorParameters(screenSizes.names)}
   ///the value to use for the screen size [$firstName]
   final T $firstName;
 
-${_getClassFields(screenSizes.names)}
+${_getClassFields(screenSizes)}
 
   ///holds additional values for screen sizes larger than the minimum width of the value's key
   final Map<int, T>? additionalValues;
@@ -67,10 +69,11 @@ ${screenSizes.names.map((name) => "      $name:$name,").join("\n")}
     return result;
   }
 
-  String _getClassFields(List<String> names){
+  String _getClassFields(ScreenSizes screenSizes){
+    final names = screenSizes.names;
     final extendedNames = List<String>.empty(growable: true);
     for(int i = 1; i < names.length; i++){
-      extendedNames.add("  ///the value to use for the screen size [${names[i]}]\n  final T? ${names[i]};");
+      extendedNames.add("  ///the value to use for screen sizes >= [${screenSizes.minimumWidths[i]}]\n  final T? ${names[i]};");
     }
     return extendedNames.join("\n\n");
   }
