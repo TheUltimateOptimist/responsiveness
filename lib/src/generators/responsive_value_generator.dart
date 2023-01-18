@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'generator.dart';
 import 'screen_sizes.dart';
 
