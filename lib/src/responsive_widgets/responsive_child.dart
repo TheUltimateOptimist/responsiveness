@@ -4,7 +4,7 @@ import 'package:flutter/material.dart'
 import 'selector.dart';
 
 ///{@template responsive_child}
-///It retuns different widgets based on the current screen size.
+///It provides different widgets based on the current screen size.
 ///
 ///Use it when you want to provide different [Widget]s based on the curren screen size.
 ///

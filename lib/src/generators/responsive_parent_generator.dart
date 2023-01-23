@@ -10,7 +10,7 @@ class ResponsiveParentGenerator implements Generator{
 ///{@template responsive_parent}
 ///It wraps the given [child] with different [Widget]s based on the current screen size.
 ///
-///Use it when you want to wrap an Object or subtree with different [Widget]s baded on the current screen size.
+///Use it when you want to wrap an Object or subtree with different [Widget]s based on the current screen size.
 ///
 ///It needs to be given a [child].
 ///
