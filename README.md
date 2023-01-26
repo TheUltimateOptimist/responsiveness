@@ -1,4 +1,4 @@
-A minimal, easy to use responsive framework for building UI for all screen sizes using the [Boostrap](https://getbootstrap.com/docs/5.0/layout/breakpoints/) breakpoints.
+A minimal, easy to use responsive framework for building UI for all screen sizes using the [Boostrap](https://getbootstrap.com/docs/5.0/layout/breakpoints/) breakpoints by default.
 
 - [1. Background](#background)
 - [2. Breakpoints](#breakpoints)
@@ -33,7 +33,7 @@ You can also provide custom breakpoints instead of using the default ones, as sh
 
 ##  3. <a name='creatingtheui'></a>Creating the UI
 
-The following four classes can be used to defina a responsive UI in an easy, readable manner.
+The following three widgets can be used to defina a responsive UI in an easy, readable manner.
 
 - ### ResponsiveValue
   The ```ResponsiveValue``` allows you to provide different values based on the current screen size. The value it provides can be anything from a ```double``` to a ```Widget```.
@@ -99,31 +99,56 @@ The following four classes can be used to defina a responsive UI in an easy, rea
     );
   ```
 
-  In the above example, a ```Column``` will be displayed for the screen sizes xs and sm whereas a ```Row``` will be displayed for the screen sizes md - xxl.
+  In the above example, a ```Column``` will be displayed for the screen sizes xs and sm whereas a ```Row``` will be displayed for the screen sizes md - xxl.  
 
-- ### Current ```ScreenSize```
-  Even though ```ResponsiveValue```, ```ResponsiveChild``` and ```ResponsiveParent``` should usually be enough, it is also possible to determine the current screen size and perform custom logic based on the result.
+### Additional Values/Widgets
+Besides accepting one widget/value for each screen size of the predefined screen sizes, ```ResponsiveValue```, ```ResponsiveChild``` and ```ResponsiveParent``` also allow you to specify addional values/widgets for different screen sizes. All of the additional widgets/values need to be put in a map, in which every entries key is the minimum width to which the corresponding value or widget should be applied.
+In code:
+```dart
+static const fontSize = ResponsiveValue<double>(
+  xs: 20,
+  md: 30,
+  additionalValues: <int, double>{
+    2000: 50,
+  },
+);
+@override
+Widget build(BuildContext context) {
+  final textStyle = TextStyle(fontSize: fontSize.of(context));
+  return ResponsiveChild(
+    xs: Text("xs,sm", style: textStyle),
+    md: Text("md, lg, xl, xxl", style: textStyle),
+    additionalWidgets: <int, Widget>{
+      2000: Text(">= 2000", style: textStyle),
+    },
+  );
+}
+```
+In the above code snippet adjustments have been also made for screens wider than 2000 logical pixels even though such a screen size is not part of the predefined screen sizes.
 
-  Given the ```BuildContext``` you can use ```ScreenSize.of(context)``` to get the current ```ScreenSize```.
+### Current ```ScreenSize```
+Even though ```ResponsiveValue```, ```ResponsiveChild``` and ```ResponsiveParent``` should usually be enough, it is also possible to determine the current screen size and perform custom logic based on the result.
 
-  Apart from the default fields that an enum exposes, the ```ScreenSize``` enum exposes the ```minimumWidth``` field. If ```xxl``` is the current ```ScreenSize``` for example, the ```minimumWidth``` field will be equal to 1400.
+Given the ```BuildContext``` you can use ```ScreenSize.of(context)``` to get the current ```ScreenSize```.
 
-  The ```ScreenSize``` enum could be used like so:
-  ```dart
-  @override
-  Widget build(BuildContext context){
-    final screenSize = ScreenSize.of(context);
-    if(screenSize == ScreenSize.xs){
-      return Text(screenSize.minimumWidth)//same as Text("0")
-    }
-    else if(screenSize == ScreenSize.sm){
-      return Text(screenSize.minimumWidth)//same as Text("576")
-    }
-    else{
-      return Text("some text")
-    }
+Apart from the default fields that an enum exposes, the ```ScreenSize``` enum exposes the ```minimumWidth``` field. If ```xxl``` is the current ```ScreenSize``` for example, the ```minimumWidth``` field will be equal to 1400.
+
+The ```ScreenSize``` enum could be used like so:
+```dart
+@override
+Widget build(BuildContext context){
+  final screenSize = ScreenSize.of(context);
+  if(screenSize == ScreenSize.xs){
+     return Text(screenSize.minimumWidth)//same as Text("0")
   }
-  ```
+   else if(screenSize == ScreenSize.sm){
+     return Text(screenSize.minimumWidth)//same as Text("576")
+   }
+   else{
+     return Text("some text")
+  }
+ }
+```
 
 ##  4. <a name='custombreakpoints'></a>Custom Breakpoints
 
