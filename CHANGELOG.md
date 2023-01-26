@@ -101,5 +101,8 @@
 - added ```additionalValues``` property to ```ResponsiveValue```
 - added ```additionalWidgets``` property to ```ResponsiveParent```, ```ResponsiveChild```
 
+## 1.2.3
+
+- improved README
 
 
