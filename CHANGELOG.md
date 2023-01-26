@@ -95,5 +95,11 @@
 - fixed typos
 - small refactor
 
+## 1.2.2
+
+- improved documentation
+- added ```additionalValues``` property to ```ResponsiveValue```
+- added ```additionalWidgets``` property to ```ResponsiveParent```, ```ResponsiveChild```
+
 
 
