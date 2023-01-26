@@ -71,7 +71,7 @@ The following three widgets can be used to defina a responsive UI in an easy, re
   Nevertheless for the screen sizes lg, xl, and xxl the value from the screen size md will be used as it is the nearest smaller screen size to the three.
 
 - ### ResponsiveChild
-  ```The ResponsiveChild``` widget allows you to provide different widgets based on the current screen size.  
+  The ```ResponsiveChild``` widget allows you to provide different widgets based on the current screen size.  
   Just like in the case of ```ResponsiveValue```, you do not need to specify a widget for every single one of the six differnt possible screen sizes.  
   Only the widget for the screen size xs is mandatory.
   
@@ -90,7 +90,7 @@ The following three widgets can be used to defina a responsive UI in an easy, re
   ```
 
 - ### ResponsiveParent
-  ```The ResponsiveParent``` widget allows you to wrap a given ```Object``` with different ```Widget```s based on the current screen size.   
+  The ```ResponsiveParent``` widget allows you to wrap a given ```Object``` with different ```Widget```s based on the current screen size.   
   To wrap the ```Object``` that you provided using the ```child``` parameter, you need to specify a callback for at least the screen size xs.  
   This callback receives the given ```child```  as a parameter and returns a new ```Widget```.  
   Inside the callback you can for example wrap the ```child``` with a ```Column``` or ```Row``` and return the newly created ```Widget```.  

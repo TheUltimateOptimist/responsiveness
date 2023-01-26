@@ -113,4 +113,8 @@
 
 - improved README
 
+## 1.2.6
+
+- imroved README
+
 
