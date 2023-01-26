@@ -105,4 +105,8 @@
 
 - improved README
 
+## 1.2.4
+
+- fixed typo
+
 

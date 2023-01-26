@@ -102,7 +102,7 @@ The following three widgets can be used to defina a responsive UI in an easy, re
   In the above example, a ```Column``` will be displayed for the screen sizes xs and sm whereas a ```Row``` will be displayed for the screen sizes md - xxl.  
 
 ### Additional Values/Widgets
-Besides accepting one widget/value for each screen size of the predefined screen sizes, ```ResponsiveValue```, ```ResponsiveChild``` and ```ResponsiveParent``` also allow you to specify addional values/widgets for different screen sizes. All of the additional widgets/values need to be put in a map, in which every entries key is the minimum width to which the corresponding value or widget should be applied.  
+Besides accepting one widget/value for each screen size of the predefined screen sizes, ```ResponsiveValue```, ```ResponsiveChild``` and ```ResponsiveParent``` also allow you to specify addional values/widgets for different screen sizes. All of the additional widgets/values need to be put in a map, in which every entry's key is the minimum width to which the corresponding value or widget should be applied.  
 In code:
 ```dart
 static const fontSize = ResponsiveValue<double>(
