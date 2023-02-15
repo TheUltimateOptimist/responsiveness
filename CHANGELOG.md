@@ -117,4 +117,8 @@
 
 - imroved README
 
+## 1.2.7
+
+- improved documentation
+
 
