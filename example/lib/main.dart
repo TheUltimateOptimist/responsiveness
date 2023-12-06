@@ -10,8 +10,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const MyHomePage(),
+    return const MaterialApp(
+      home: MyHomePage(),
     );
   }
 }
@@ -43,27 +43,25 @@ class MyHomePage extends StatelessWidget {
           xs: (child) => Theme(data: ThemeData.light(), child: child),
           sm: (child) => Theme(data: ThemeData.dark(), child: child),
           xxl: (child) => Theme(data: ThemeData.light(), child: child),
-          child: Builder(
-            builder: (context) {
-              final textStyle = Theme.of(context).textTheme.bodyMedium;
-              return Container(
-                color: Theme.of(context).cardColor,
-                width: containerSize.of(context).width,
-                height: containerSize.of(context).height,
-                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                child: Center(
-                  child: ResponsiveChild(
-                    xs: Text("Screen Size xs", style: textStyle),
-                    sm: Text("Screen Size sm", style: textStyle),
-                    md: Text("Screen Size md", style: textStyle),
-                    lg: Text("Screen Size lg", style: textStyle),
-                    xl: Text("Screen Size xl", style: textStyle),
-                    xxl: Text("Screen Size xxl", style: textStyle),
-                  ),
+          child: Builder(builder: (context) {
+            final textStyle = Theme.of(context).textTheme.bodyMedium;
+            return Container(
+              color: Theme.of(context).cardColor,
+              width: containerSize.of(context).width,
+              height: containerSize.of(context).height,
+              margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              child: Center(
+                child: ResponsiveChild(
+                  xs: Text("Screen Size xs", style: textStyle),
+                  sm: Text("Screen Size sm", style: textStyle),
+                  md: Text("Screen Size md", style: textStyle),
+                  lg: Text("Screen Size lg", style: textStyle),
+                  xl: Text("Screen Size xl", style: textStyle),
+                  xxl: Text("Screen Size xxl", style: textStyle),
                 ),
-              );
-            }
-          ),
+              ),
+            );
+          }),
         ),
       ),
     );
@@ -87,10 +85,7 @@ class _Page2Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {},
-      child: const _LinkText("Page Two")
-    );
+    return TextButton(onPressed: () {}, child: const _LinkText("Page Two"));
   }
 }
 
