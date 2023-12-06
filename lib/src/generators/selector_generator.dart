@@ -26,21 +26,11 @@ extension _Selector on BuildContext {
 
 class _ValuesForAllScreenSizes<T> {
   _ValuesForAllScreenSizes({
-    required this.xs,
-    this.sm,
-    this.md,
-    this.lg,
-    this.xl,
-    this.xxl,
+${_getConstructorParameters(screenSizes.names)} 
     this.additionalValues,
   });
 
-  final T xs;
-  final T? sm;
-  final T? md;
-  final T? lg;
-  final T? xl;
-  final T? xxl;
+${getConstructorDeclarations(screenSizes.names)}
   final Map<int, T>? additionalValues;
 
   List<_ValueForMinimumWidth<T>> _exportAllValues() {
@@ -49,18 +39,7 @@ class _ValuesForAllScreenSizes<T> {
 
   List<_ValueForMinimumWidth<T>> _exportBasicValues() {
     return [
-      _ValueForMinimumWidth<T>(
-          minimumWidth: ScreenSize.xs.minimumWidth, value: xs),
-      _ValueForMinimumWidth<T>(
-          minimumWidth: ScreenSize.sm.minimumWidth, value: sm),
-      _ValueForMinimumWidth<T>(
-          minimumWidth: ScreenSize.md.minimumWidth, value: md),
-      _ValueForMinimumWidth<T>(
-          minimumWidth: ScreenSize.lg.minimumWidth, value: lg),
-      _ValueForMinimumWidth<T>(
-          minimumWidth: ScreenSize.xl.minimumWidth, value: xl),
-      _ValueForMinimumWidth<T>(
-          minimumWidth: ScreenSize.xxl.minimumWidth, value: xxl),
+${exportBasicValues(screenSizes.names)}      
     ];
   }
 
@@ -89,5 +68,30 @@ class _ValueForMinimumWidth<T> {
   T? value;
 }
 """;
+  }
+
+  String _getConstructorParameters(List<String> names) {
+    var result = "    required this.${names[0]},\n";
+    for (int i = 1; i < names.length; i++) {
+      result += "    this.${names[i]},\n";
+    }
+    return result.trimRight();
+  }
+
+  String getConstructorDeclarations(List<String> names) {
+    var result = "  final T ${names[0]};\n";
+    for (int i = 1; i < names.length; i++) {
+      result += "  final T? ${names[i]};\n";
+    }
+    return result.trimRight();
+  }
+
+  String exportBasicValues(List<String> names) {
+    var result = "";
+    for (int i = 0; i < names.length; i++) {
+      result +=
+          "      _ValueForMinimumWidth<T>(minimumWidth: ScreenSize.${names[i]}.minimumWidth, value: ${names[i]}),\n";
+    }
+    return result.trimRight();
   }
 }

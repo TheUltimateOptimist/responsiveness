@@ -121,4 +121,8 @@
 
 - improved documentation
 
+## 1.2.8
+
+- fixed mistake in source code generation
+
 
